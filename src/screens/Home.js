@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { View, Text, ImageBackground, TouchableOpacity, Image, StyleSheet, ScrollView, Animated, Dimensions } from 'react-native';
 import { responsiveHeight, responsiveWidth, responsiveFontSize } from 'react-native-responsive-dimensions';
 import Header from '../components/Header';
-import Footer from './Footer';
+import Footer from '../components/Footer';
 const screenWidth = Dimensions.get('window').width;
 const Home = ({ navigation }) => {
 
@@ -23,6 +23,7 @@ const Home = ({ navigation }) => {
     //         ])
     //     ).start();
     // }, [translateX]);
+
     return (
         <ScrollView contentContainerStyle={styles.container}>
             <ImageBackground

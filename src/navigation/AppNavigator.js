@@ -2,7 +2,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { View, StyleSheet } from 'react-native';
 import Home from '../screens/Home';
 import About from '../screens/About';
-import Footer from '../screens/Footer';
+import Host from '../screens/Host';
 import { PaperProvider, DefaultTheme } from 'react-native-paper';
 const Stack = createNativeStackNavigator();
 const customTheme = {
@@ -25,6 +25,11 @@ const AppNavigator = () => {
                     <Stack.Screen
                         name="About"
                         component={About}
+                        options={{ headerShown: false }}
+                    />
+                    <Stack.Screen
+                        name="Host"
+                        component={Host}
                         options={{ headerShown: false }}
                     />
                 </Stack.Navigator>

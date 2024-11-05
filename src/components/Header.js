@@ -73,7 +73,7 @@ const Header = ({ navigation, back }) => {
                     <TouchableOpacity onPress={() => { navigation.navigate('About'); toggleMenu(); }}>
                         <Text style={styles.menuItem}>About Us</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={toggleMenu}>
+                    <TouchableOpacity onPress={() => { navigation.navigate('Host'); toggleMenu(); }}>
                         <Text style={styles.menuItem}>Our Hosts</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={toggleMenu}>
@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingHorizontal: responsiveWidth(3),
         paddingVertical: responsiveHeight(1.25),
-        marginTop:responsiveHeight(3)
+        marginTop: responsiveHeight(3)
     },
     leftHeader: {
         flexDirection: 'row',
