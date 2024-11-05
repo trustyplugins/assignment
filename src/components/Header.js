@@ -104,6 +104,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingHorizontal: responsiveWidth(3),
         paddingVertical: responsiveHeight(1.25),
+        marginTop:responsiveHeight(3)
     },
     leftHeader: {
         flexDirection: 'row',
