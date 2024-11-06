@@ -1,31 +1,107 @@
-import React, { useEffect, useRef } from 'react';
-import { View, Text, ImageBackground, TouchableOpacity, Image, StyleSheet, ScrollView, Animated, Dimensions } from 'react-native';
+import React, { useEffect, useRef, useState } from 'react';
+import { View, Text, ImageBackground, TouchableOpacity, Image, StyleSheet, ScrollView, Linking, Dimensions, Animated, Vibration } from 'react-native';
 import { responsiveHeight, responsiveWidth, responsiveFontSize } from 'react-native-responsive-dimensions';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { WebView } from 'react-native-webview';
+import Icon from 'react-native-vector-icons/FontAwesome';
 const screenWidth = Dimensions.get('window').width;
 const Home = ({ navigation }) => {
+    const [isRunning, setIsRunning] = useState(false);
+    const [loadMore, setLoadMore] = useState(false);
+    const [videoContent, setVideoContent] = useState({
+        id: 1,
+        img: require("../../assets/th-1.jpg"),
+        title: "Knockout with Noel Clubb 31124",
+        subtitle: 'Knockout with Noel Clubb',
+        desc: "A look into the latest boxing news and matches with commentaries by an elite panel of boxing experts and special guests.",
+        desc1: "Special Guest: Jaye Byard, Ray Olubowale, Richard Solomon, Ryan Rannelli & Steve Beaupre.",
+        url: "https://www.youtube.com/watch?v=QN_1o1VoJZo"
+    })
+    const scaleAnim = useRef(new Animated.Value(1)).current;
+    const scrollViewRef = useRef(null);
 
-    // const translateX = useRef(new Animated.Value(-100)).current;
-    // useEffect(() => {
-    //     Animated.loop(
-    //         Animated.sequence([
-    //             Animated.timing(translateX, {
-    //                 toValue: screenWidth,
-    //                 duration: 3000,
-    //                 useNativeDriver: true,
-    //             }),
-    //             Animated.timing(translateX, {
-    //                 toValue: -100, // Reset to start position
-    //                 duration: 0,
-    //                 useNativeDriver: true,
-    //             }),
-    //         ])
-    //     ).start();
-    // }, [translateX]);
+    useEffect(() => {
+        if (isRunning) {
+            startPulseAnimation();
+        } else {
+            scaleAnim.stopAnimation();
+            scaleAnim.setValue(1);
+        }
+    }, [isRunning]);
 
+    const handleWatchMore = () => {
+        const url = 'https://www.youtube.com/@HERNetworks';
+        Linking.openURL(url).catch((err) => console.error('An error occurred', err));
+    };
+    const handleClick = () => {
+        const url = 'https://m.youtube.com/@SpanglishWorldNetwork';
+        Linking.openURL(url).catch((err) => console.error('An error occurred', err));
+    };
+    const togglePlayPause = (data) => {
+        setVideoContent(prev => data)
+        setLoadMore(false)
+        setIsRunning(true);
+        const dynamicHeight = responsiveHeight(55);
+        if (scrollViewRef.current) {
+            scrollViewRef.current.scrollTo({ y: dynamicHeight, animated: true });
+        }
+        setTimeout(() => {
+            startPulseAnimation();
+        }, 1000)
+    };
+    const startPulseAnimation = () => {
+        Animated.loop(
+            Animated.sequence([
+                Animated.timing(scaleAnim, {
+                    toValue: 1.2,
+                    duration: 100,
+                    useNativeDriver: true,
+                }),
+                Animated.timing(scaleAnim, {
+                    toValue: 1,
+                    duration: 100,
+                    useNativeDriver: true,
+                }),
+            ])
+        ).start();
+    };
+    const showMore = () => {
+        setLoadMore((prev) => !prev)
+    }
+
+    const latestShows = [
+        {
+            id: 1,
+            img: require("../../assets/th-1.jpg"),
+            title: "Knockout with Noel Clubb 31124",
+            subtitle: 'Knockout with Noel Clubb',
+            desc: "A look into the latest boxing news and matches with commentaries by an elite panel of boxing experts and special guests.",
+            desc1: "Special Guest: Jaye Byard, Ray Olubowale, Richard Solomon, Ryan Rannelli & Steve Beaupre.",
+            url: "https://www.youtube.com/watch?v=QN_1o1VoJZo"
+        },
+        {
+            id: 2,
+            img: require("../../assets/th-2.jpg"),
+            title: "Candid Frank Live Leaf Talk with Candid Frank Stanisci and Aaron Freeland 11124",
+            subtitle: 'Candid Frank Live Leaf Talk with Candid Frank Stanisci and Aaron Freeland',
+            desc: "Candid Frank Stanisci and Aaron Freeland take a look at the latest news about the Toronto Maple Leafs making waves around the NHL.",
+            desc1: "#CandidFrankLive, Frank Stanisci, Aaron Freeland, Spanglish World Networks, Spanglish Sports World, H.E.R. Network, La Ronda del Dia, #LaPortadaCanada, Zingo TV, City of Toronto, National Hockey League (NHL), Toronto Maple Leafs, #AnaheimDucks, #ArizonaCoyotes, #BostonBruins, #BuffaloSabres, #CalgaryFlames, #CarolinaHurricanes, #ChicagoBlackhawks, #ColoradoAvalanche, #ColumbusBlueJackets, #DallasStars, #DetroitRedWings, #EdmontonOilers, #FloridaPanthers, #LosAngelesKings, #MinnesotaWild, #MontrealCanadiens, #NashvillePredators, #NewJerseyDevils, #NewYorkIslanders, #NewYorkRangers, #OttawaSenators, #PhiladelphiaFlyers, #PittsburghPenguins, #SanJoseSharks, #SeattleKraken, #StLouisBlues, #TampaBayLightning, #VancouverCanucks, #VegasGoldenKnights, #WashingtonCapitals, #WinnipegJets, American Hockey League, Toronto Marlies Hockey Club, Ontario Hockey League, MLSE (Maple Leaf Sports & Entertainment Partnership), Sportsnet, TSN - The Sports Network - Canada, CBC, CBC/Radio-Canada, CBC Sports, ESPN, ESPN+, Barley Sport, CBS, CBS News and Stations, CBS Sports, NHL Network, Madison Square Garden Sports Corp., CityTV Toronto, CTV News",
+            url: "https://www.youtube.com/watch?v=-PZn-uYgB1s"
+        },
+        {
+            id: 3,
+            img: require("../../assets/th-3.jpg"),
+            title: "Candid Frank Live CFL Talk with Frank Stanisci and David Morassutti 281024",
+            subtitle: 'Candid Frank Live CFL Talk with Frank Stanisci and David Morassutti',
+            desc: "Candid Frank Stanisci and David Morassutti take a deep dive into the headlines in the CFL",
+            desc1: "#candidfranklivecfltalk, #candidfrankliveshows, Frank Stanisci, DavidMorassutti, Canadian Football League, Canadian Football League Players' Association (CFLPA), Toronto Argonauts Football Club Inc., Hamilton Tiger-Cats Football Club, Calgary Stampeder Football Club, Alouettes de Montréal, Saskatchewan Roughrider Football Club Inc., BC Lions Football Club, Edmonton Elks, Spanglish World Networks, Spanglish Sports World, La Ronda del Dia, H.E.R. Network, Zingo TV, #LaPortadaCanada, Sportsnet, CBC Sports, TSN - The Sports Network - Canada, Corus Entertainment, Bell Media, Bell Media, Inc., Bell, Rogers Communications, CityTV Toronto, Disney Sports/ESPN Wide World of Sports, ESPN, CBS, NBCUniversal, USA Networks, Olympic Broadcasting Services, NBC Sports, CNN, CNN en Español, BBC, BBC News, FOX Sports, Grupo Televisa, Cisneros, Cisneros Media",
+            url: "https://www.youtube.com/watch?v=b6H47kAIBAc"
+        },
+
+    ]
     return (
-        <ScrollView contentContainerStyle={styles.container}>
+        <ScrollView ref={scrollViewRef} contentContainerStyle={styles.container}>
             <ImageBackground
                 source={require("../../assets/media-event.jpg")}
                 style={styles.backgroundImage}
@@ -37,13 +113,14 @@ const Home = ({ navigation }) => {
                     <Text style={styles.topTitle}>The Best Media Content</Text>
                     <Text style={styles.title}>Spanglish World Networks</Text>
                     <Text style={styles.subtitle}>The best content for you!</Text>
-                    <TouchableOpacity style={styles.button}>
+                    <TouchableOpacity style={styles.button} onPress={handleClick}>
                         <Text style={styles.buttonText}>YouTube</Text>
                     </TouchableOpacity>
                 </View>
             </ImageBackground>
 
             {/* Our Channels Section */}
+
             <View style={styles.channelsSection}>
                 <Text style={styles.channelsTitle}>Our Channels</Text>
                 <View style={styles.channelIcons}>
@@ -53,13 +130,91 @@ const Home = ({ navigation }) => {
                 </View>
                 <View><Image source={require('../../assets/ch-4.png')} style={{ width: responsiveWidth(24), height: responsiveHeight(14), resizeMode: 'contain' }} /></View>
             </View>
+
             {/* About Spanglish */}
+
             <View style={styles.aboutSection}>
                 <Text style={styles.aboutTopTitle}>About Spanglish</Text>
                 <Text style={styles.aboutTitle}>From entertainment and fun to education and growth</Text>
                 <Text style={styles.aboutDes}>Spanglish World Networks Inc. is a conglomerate of multi-media companies that brings their audiences the most updated information through mediums like TV, Radio, Newspapers and Digital media. </Text>
                 <View>
                 </View>
+            </View>
+
+            {/* Latest Shows Section */}
+
+            <View style={styles.latestShowsSection}>
+                <Text style={styles.sectionTitle}>Our Latest Shows</Text>
+                <TouchableOpacity style={styles.watchMoreButton} onPress={handleWatchMore}>
+                    <Text style={styles.watchMoreText}>Watch More</Text>
+                </TouchableOpacity>
+
+                <View style={styles.showCard}>
+                    <TouchableOpacity>
+                        <WebView
+                            style={styles.video}
+                            source={{
+                                uri: videoContent.url
+                            }}
+                            allowsFullscreenVideo={true}
+                        />
+                    </TouchableOpacity>
+                    <View style={styles.showContent}>
+                        <Text style={styles.showTitle}>{videoContent.title}</Text>
+                        <Text style={styles.showSubTitle}>{videoContent.subtitle}{'\n'}</Text>
+                        <Text style={styles.showDescription}>
+                            {videoContent.desc}.{'\n'}</Text>
+                        {!loadMore ? <Text style={styles.showDescription}>
+                            {videoContent.desc1.substring(0, videoContent.desc1.length / 4)}... </Text> : <Text style={styles.showDescription}>
+                            {videoContent.desc1} </Text>}
+                        <TouchableOpacity onPress={showMore}>
+                            <Text style={{ color: "#FFD700", fontWeight: "bold", marginTop: 8, fontSize: 15 }}>{!loadMore ? "[+] Show More" : "[-] Show Less"}</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+
+                <View
+                    style={{ alignItems: 'center', justifyContent: 'center', flex: 1, marginBottom: responsiveHeight(3) }}
+                >
+                    {
+                        latestShows.map((item) => (
+                            <View key={item.id} style={{
+                                position: 'relative', width: responsiveWidth(85),
+                                height: responsiveHeight(40), paddingVertical: responsiveHeight(5),
+                                marginBottom: responsiveHeight(2),
+                            }}>
+                                <TouchableOpacity onPress={() => togglePlayPause(item)}>
+                                    <Image
+                                        source={item.img}
+                                        style={{
+                                            width: '100%',
+                                            height: '100%',
+                                            borderRadius: 10,
+                                        }}
+                                    />
+
+                                    <Animated.View style={{
+                                        position: 'absolute',
+                                        top: '50%',
+                                        left: '50%',
+                                        transform: [{ translateX: -25 }, { translateY: -25 }, { scale: videoContent.id === item.id ? scaleAnim : 1 },],
+                                    }}>
+                                        {isRunning && videoContent.id == item.id ? (
+                                            <Icon name="pause" size={35} color="green" />
+                                        ) : (
+                                            <Icon name="play" size={35} color="red" />
+                                        )}
+                                    </Animated.View>
+                                </TouchableOpacity>
+                                <Text style={{ fontSize: 16, fontWeight: 'bold', marginTop: 5 }}>{item.subtitle}</Text>
+                                <Text style={{ fontSize: 14, color: 'gray', marginTop: 3 }}>
+                                    {item.desc.substring(0, item.desc.length / 2)}...
+                                </Text>
+                            </View>
+                        ))
+                    }
+                </View>
+
             </View>
 
             <Footer />
@@ -170,6 +325,51 @@ const styles = StyleSheet.create({
         marginBottom: responsiveHeight(1.2),
     },
     aboutDes: {
+        fontSize: responsiveFontSize(1.8),
+        color: 'gray',
+    },
+    latestShowsSection: {
+        paddingVertical: responsiveHeight(2),
+        paddingHorizontal: responsiveWidth(5),
+        backgroundColor: '#fff',
+    },
+    sectionTitle: {
+        fontSize: responsiveFontSize(2.5),
+        fontWeight: 'bold',
+        color: '#333',
+        marginBottom: responsiveHeight(1),
+    },
+    watchMoreButton: {
+        alignSelf: 'flex-end',
+        backgroundColor: '#FFD700',
+        paddingVertical: responsiveHeight(1),
+        paddingHorizontal: responsiveWidth(5),
+        borderRadius: responsiveWidth(2),
+        marginBottom: responsiveHeight(2),
+    },
+    watchMoreText: {
+        color: '#fff',
+        fontWeight: 'bold',
+        fontSize: responsiveFontSize(2),
+    },
+    showCard: {
+        marginBottom: responsiveHeight(0),
+    },
+    video: {
+        height: responsiveHeight(21),
+    },
+    showContent: {
+        padding: responsiveWidth(4),
+    },
+    showTitle: {
+        fontSize: responsiveFontSize(2.5),
+        fontWeight: 'bold',
+    },
+    showSubTitle: {
+        fontSize: responsiveFontSize(1.8),
+        color: 'gray',
+    },
+    showDescription: {
         fontSize: responsiveFontSize(1.8),
         color: 'gray',
     },
