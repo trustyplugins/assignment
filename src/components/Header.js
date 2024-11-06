@@ -1,11 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { View, TouchableOpacity, Image, StyleSheet, Animated, Text } from 'react-native';
+import { View, TouchableOpacity, Image, StyleSheet, Animated, Text, Dimensions } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {
     responsiveHeight,
     responsiveWidth,
 } from "react-native-responsive-dimensions";
 
+const screenHeight = Dimensions.get("window").height;
 const Header = ({ navigation, back }) => {
     const [menuVisible, setMenuVisible] = useState(false);
     const translateX = useRef(new Animated.Value(-200)).current; // Initial position off-screen
@@ -131,7 +132,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         paddingVertical: responsiveHeight(2),
         elevation: 5,
-        zIndex: 1000
+        zIndex: 1000,
+        height: screenHeight
     },
     closeButton: {
         position: 'absolute',

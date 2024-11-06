@@ -53,6 +53,15 @@ const Home = ({ navigation }) => {
                 </View>
                 <View><Image source={require('../../assets/ch-4.png')} style={{ width: responsiveWidth(24), height: responsiveHeight(14), resizeMode: 'contain' }} /></View>
             </View>
+            {/* About Spanglish */}
+            <View style={styles.aboutSection}>
+                <Text style={styles.aboutTopTitle}>About Spanglish</Text>
+                <Text style={styles.aboutTitle}>From entertainment and fun to education and growth</Text>
+                <Text style={styles.aboutDes}>Spanglish World Networks Inc. is a conglomerate of multi-media companies that brings their audiences the most updated information through mediums like TV, Radio, Newspapers and Digital media. </Text>
+                <View>
+                </View>
+            </View>
+
             <Footer />
         </ScrollView>
     );
@@ -141,5 +150,27 @@ const styles = StyleSheet.create({
         width: responsiveWidth(12),
         height: responsiveWidth(12),
         resizeMode: 'contain',
+    },
+    aboutSection: {
+        backgroundColor: '#FFFFFF',
+        paddingVertical: responsiveHeight(3),
+        paddingHorizontal: responsiveWidth(5)
+    },
+    aboutTopTitle: {
+        fontSize: responsiveFontSize(2),
+        fontWeight: 'semibold',
+        color: '#000',
+        marginBottom: responsiveHeight(1.2),
+        paddingLeft: responsiveWidth(4)
+    },
+    aboutTitle: {
+        fontSize: responsiveFontSize(2.5),
+        fontWeight: 'bold',
+        color: '#000',
+        marginBottom: responsiveHeight(1.2),
+    },
+    aboutDes: {
+        fontSize: responsiveFontSize(1.8),
+        color: 'gray',
     },
 });
