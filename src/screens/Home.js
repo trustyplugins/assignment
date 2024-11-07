@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { View, Text, ImageBackground, TouchableOpacity, Image, StyleSheet, ScrollView, Linking, Dimensions, Animated, Vibration } from 'react-native';
+import { View, Text, ImageBackground, TouchableOpacity, Image, StyleSheet, ScrollView, Linking, Dimensions, Animated, FlatList } from 'react-native';
 import { responsiveHeight, responsiveWidth, responsiveFontSize } from 'react-native-responsive-dimensions';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -20,6 +20,78 @@ const Home = ({ navigation }) => {
     })
     const scaleAnim = useRef(new Animated.Value(1)).current;
     const scrollViewRef = useRef(null);
+    const flatListRef = useRef(null);
+    const scrollX = useRef(new Animated.Value(0)).current;
+
+    const hostImg = [
+        {
+            id: 1,
+            img: require('../../assets/host-1.png')
+        },
+        {
+            id: 2,
+            img: require('../../assets/host-2.png')
+        },
+        {
+            id: 3,
+            img: require('../../assets/host-3.png')
+        },
+        {
+            id: 4,
+            img: require('../../assets/host-4.png')
+        },
+        {
+            id: 5,
+            img: require('../../assets/host-5.png')
+        },
+        {
+            id: 6,
+            img: require('../../assets/host-6.png')
+        },
+        {
+            id: 7,
+            img: require('../../assets/host-7.png')
+        },
+        {
+            id: 8,
+            img: require('../../assets/host-8.png')
+        },
+        {
+            id: 9,
+            img: require('../../assets/host-9.png')
+        },
+        {
+            id: 10,
+            img: require('../../assets/host-10.jpg')
+        },
+        {
+            id: 11,
+            img: require('../../assets/host-11.png')
+        },
+        {
+            id: 12,
+            img: require('../../assets/host-12.png')
+        },
+        {
+            id: 13,
+            img: require('../../assets/host-13.png')
+        },
+        {
+            id: 14,
+            img: require('../../assets/host-14.png')
+        },
+    ]
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            flatListRef.current?.scrollToOffset({
+                offset: (scrollX._value + screenWidth) % (hostImg.length * screenWidth),
+                animated: true,
+            });
+        }, 1500); // Slide every 3 seconds
+
+        return () => clearInterval(interval);
+    }, [scrollX]);
 
     useEffect(() => {
         if (isRunning) {
@@ -100,6 +172,9 @@ const Home = ({ navigation }) => {
         },
 
     ]
+
+
+
     return (
         <ScrollView ref={scrollViewRef} contentContainerStyle={styles.container}>
             <ImageBackground
@@ -217,6 +292,360 @@ const Home = ({ navigation }) => {
 
             </View>
 
+            <ImageBackground
+                source={require("../../assets/bg-2.jpg")}
+                style={styles.backgroundImage}
+            >
+                <View style={{ paddingVertical: responsiveHeight(7), paddingHorizontal: responsiveWidth(7) }}>
+                    <Text style={{ fontSize: responsiveFontSize(2.2), color: "#ffb700", borderWidth: 1, borderColor: "gray", width: responsiveWidth(55), paddingHorizontal: 11, borderRadius: 20, justifyContent: "center", paddingVertical: 5 }}>Enjoy Our Programming </Text>
+                    <Text style={{ fontSize: responsiveFontSize(2.5), color: "#fff", marginVertical: responsiveHeight(3), fontWeight: 'bold' }}>Whatever You're Into, Get Into Spanglish!</Text>
+                    <Text style={{ fontSize: responsiveFontSize(1.7), color: "#fff" }}>Where stories come to life through the magic of sound and motion. From riveting interviews to eye-opening documentaries, let your senses feast on a buffet of compelling narratives.</Text>
+                    <TouchableOpacity style={{
+                        backgroundColor: '#FFD700', paddingVertical: responsiveHeight(1.5), borderRadius: responsiveWidth(10), width: responsiveWidth(42), marginVertical: responsiveHeight(4)
+                    }} onPress={handleClick}>
+                        <Text style={{ color: '#fff', fontWeight: 'bold', fontSize: responsiveFontSize(2), textAlign: "center" }}>Tune Fore More</Text>
+                    </TouchableOpacity>
+                </View>
+            </ImageBackground>
+
+            {/* Our Hosts */}
+
+            <View style={{ justifyContent: "center", alignItems: "center" }}>
+                <Text style={styles.aboutTopTitle}>Our Hosts</Text>
+                <Text style={{ ...styles.aboutTitle, fontSize: responsiveFontSize(3.5) }}>Meet Our Top Talent</Text>
+                <FlatList
+                    ref={flatListRef}
+                    data={hostImg}
+                    keyExtractor={(item) => item.id}
+                    horizontal
+                    pagingEnabled
+                    showsHorizontalScrollIndicator={false}
+                    onScroll={Animated.event(
+                        [{ nativeEvent: { contentOffset: { x: scrollX } } }],
+                        { useNativeDriver: false }
+                    )}
+                    renderItem={({ item }) => (
+                        <View style={{ width: responsiveWidth(100), alignItems: 'center', justifyContent: "center" }}>
+                            <Image
+                                source={item.img}
+                                style={{ width: responsiveWidth(80), height: responsiveHeight(60), resizeMode: 'contain' }}
+                            />
+                        </View>
+                    )}
+                />
+
+            </View>
+
+            <ImageBackground
+                source={require("../../assets/bg-3.jpg")}
+                style={{ ...styles.backgroundImage, height: responsiveHeight(75) }}
+                blurRadius={7}
+            >
+                <View style={{ paddingVertical: responsiveHeight(7), paddingHorizontal: responsiveWidth(7) }}>
+                    <Text style={{ fontSize: responsiveFontSize(2.7), color: "#fff", fontWeight: 'bold' }}>More than 30,000 viewers trust </Text>
+                    <Text style={{ fontSize: responsiveFontSize(2.5), color: "#FFD700", marginBottom: responsiveHeight(3), fontWeight: 'bold' }}>Spanglish World Network </Text>
+                    <Text style={{ fontSize: responsiveFontSize(2.2), color: "#fff" }}>Where stories come to life through the magic of sound and motion</Text>
+                    <View style={{ marginTop: responsiveHeight(5), flexDirection: "row", justifyContent: "space-between", flexWrap: 'wrap', gap: 15 }}>
+                        <Image
+                            source={require("../../assets/ch-1.png")}
+                            style={{ width: responsiveWidth(40), height: responsiveHeight(20), resizeMode: 'contain', backgroundColor: "#FFFFFF1A", borderRadius: 10 }}
+                        />
+                        <Image
+                            source={require("../../assets/ch-3.png")}
+                            style={{ width: responsiveWidth(40), height: responsiveHeight(20), resizeMode: 'contain', backgroundColor: "#FFFFFF1A", borderRadius: 10 }}
+                        />
+                        <Image
+                            source={require("../../assets/ch-2.png")}
+                            style={{ width: responsiveWidth(40), height: responsiveHeight(20), resizeMode: 'contain', backgroundColor: "#FFFFFF1A", borderRadius: 10 }}
+                        />
+                    </View>
+                </View>
+            </ImageBackground>
+
+            {/* Why Choose Us */}
+
+            <View
+                style={{
+                    paddingHorizontal: responsiveWidth(5),
+                    paddingVertical: responsiveHeight(3),
+                    backgroundColor: '#F5F5F5',
+                    alignItems: 'center',
+                }}
+            >
+                <Text
+                    style={{
+                        fontSize: responsiveFontSize(1.5),
+                        color: '#000',
+                        textTransform: 'uppercase',
+                        letterSpacing: 1,
+                        marginBottom: responsiveHeight(1),
+                    }}
+                >
+                    WHY CHOOSE US
+                </Text>
+                <Text
+                    style={{
+                        fontSize: responsiveFontSize(2.5),
+                        color: '#000',
+                        fontWeight: 'bold',
+                        textAlign: 'center',
+                        marginBottom: responsiveHeight(1.5),
+                    }}
+                >
+                    Why you must choose our content
+                </Text>
+                <Text
+                    style={{
+                        fontSize: responsiveFontSize(1.8),
+                        color: '#333',
+                        textAlign: 'center',
+                        marginBottom: responsiveHeight(3),
+                    }}
+                >
+                    Dive into a vibrant mosaic of articles, each a carefully crafted tapestry of words that inform, entertain, and spark curiosity. Whether you're a news hound hungry for the latest headlines or a culture connoisseur seeking the next binge-worthy masterpiece, our diverse array of content has you covered.
+                </Text>
+
+                {/* Card Section */}
+                <View
+                    style={{
+                        width: responsiveWidth(90),
+                        backgroundColor: '#FFF',
+                        borderRadius: 10,
+                        padding: responsiveWidth(5),
+                        alignItems: 'center',
+                        elevation: 5, // shadow for Android
+                        shadowColor: '#000', // shadow for iOS
+                        shadowOffset: { width: 0, height: 2 },
+                        shadowOpacity: 0.2,
+                        shadowRadius: 8,
+                        marginTop: responsiveHeight(3),
+                    }}
+                >
+                    <View
+                        style={{
+                            backgroundColor: '#FFD700', // yellow background for icon
+                            borderRadius: 10,
+                            padding: responsiveWidth(3),
+                            marginBottom: responsiveHeight(2),
+                        }}
+                    >
+                        <Icon name="comments" size={40} color="#FFF" />
+                    </View>
+                    <Text
+                        style={{
+                            fontSize: responsiveFontSize(2),
+                            fontWeight: 'bold',
+                            color: '#000',
+                            marginBottom: responsiveHeight(1),
+                        }}
+                    >
+                        Great Interviews
+                    </Text>
+                    <Text
+                        style={{
+                            fontSize: responsiveFontSize(1.6),
+                            color: '#333',
+                            textAlign: 'center',
+                            marginBottom: responsiveHeight(2),
+                        }}
+                    >
+                        Immerse yourself in thought-provoking dialogues that span a spectrum of topics—from innovation and leadership to personal growth and societal change.
+                    </Text>
+                    <TouchableOpacity
+                        style={{
+                            paddingVertical: responsiveHeight(1),
+                            paddingHorizontal: responsiveWidth(5),
+                            backgroundColor: '#FFD700', // yellow button background
+                            borderRadius: 20,
+                        }}
+                    >
+                        <Text
+                            style={{
+                                color: '#fff',
+                                fontWeight: 'bold',
+                                fontSize: responsiveFontSize(1.8),
+                                textAlign: 'center',
+                            }}
+                        >
+                            Learn More
+                        </Text>
+                    </TouchableOpacity>
+                </View>
+                <View
+                    style={{
+                        width: responsiveWidth(90),
+                        backgroundColor: '#FFF',
+                        borderRadius: 10,
+                        padding: responsiveWidth(5),
+                        alignItems: 'center',
+                        elevation: 5, // shadow for Android
+                        shadowColor: '#000', // shadow for iOS
+                        shadowOffset: { width: 0, height: 2 },
+                        shadowOpacity: 0.2,
+                        shadowRadius: 8,
+                        marginTop: responsiveHeight(3),
+                    }}
+                >
+                    <View
+                        style={{
+                            backgroundColor: '#FFD700', // yellow background for icon
+                            borderRadius: 10,
+                            padding: responsiveWidth(3),
+                            marginBottom: responsiveHeight(2),
+                        }}
+                    >
+                        <Icon name="futbol-o" size={40} color="#FFF" />
+                    </View>
+                    <Text
+                        style={{
+                            fontSize: responsiveFontSize(2),
+                            fontWeight: 'bold',
+                            color: '#000',
+                            marginBottom: responsiveHeight(1),
+                        }}
+                    >
+                        Latest Sports News
+                    </Text>
+                    <Text
+                        style={{
+                            fontSize: responsiveFontSize(1.6),
+                            color: '#333',
+                            textAlign: 'center',
+                            marginBottom: responsiveHeight(2),
+                        }}
+                    >
+                        Whether you're a weekend warrior or a fantasy league champion.  Gear up, get ready, and join us as we celebrate the triumphs, and analyze the strategies.
+                    </Text>
+                    <TouchableOpacity
+                        style={{
+                            paddingVertical: responsiveHeight(1),
+                            paddingHorizontal: responsiveWidth(5),
+                            backgroundColor: '#FFD700', // yellow button background
+                            borderRadius: 20,
+                        }}
+                    >
+                        <Text
+                            style={{
+                                color: '#fff',
+                                fontWeight: 'bold',
+                                fontSize: responsiveFontSize(1.8),
+                                textAlign: 'center',
+                            }}
+                        >
+                            Learn More
+                        </Text>
+                    </TouchableOpacity>
+                </View>
+                <View
+                    style={{
+                        width: responsiveWidth(90),
+                        backgroundColor: '#FFF',
+                        borderRadius: 10,
+                        padding: responsiveWidth(5),
+                        alignItems: 'center',
+                        elevation: 5, // shadow for Android
+                        shadowColor: '#000', // shadow for iOS
+                        shadowOffset: { width: 0, height: 2 },
+                        shadowOpacity: 0.2,
+                        shadowRadius: 8,
+                        marginTop: responsiveHeight(3),
+                    }}
+                >
+                    <View
+                        style={{
+                            backgroundColor: '#FFD700', // yellow background for icon
+                            borderRadius: 10,
+                            padding: responsiveWidth(3),
+                            marginBottom: responsiveHeight(2),
+                        }}
+                    >
+                        <Icon name="newspaper-o" size={40} color="#FFF" />
+                    </View>
+                    <Text
+                        style={{
+                            fontSize: responsiveFontSize(2),
+                            fontWeight: 'bold',
+                            color: '#000',
+                            marginBottom: responsiveHeight(1),
+                        }}
+                    >
+                        Articles of Interest and Lifestyle
+                    </Text>
+                    <Text
+                        style={{
+                            fontSize: responsiveFontSize(1.6),
+                            color: '#333',
+                            textAlign: 'center',
+                            marginBottom: responsiveHeight(2),
+                        }}
+                    >
+                        Discover wellness practices that nourish the body, mind, and soul, as we explore mindfulness, fitness trends, and holistic approaches to living a balanced life.
+                    </Text>
+                    <TouchableOpacity
+                        style={{
+                            paddingVertical: responsiveHeight(1),
+                            paddingHorizontal: responsiveWidth(5),
+                            backgroundColor: '#FFD700', // yellow button background
+                            borderRadius: 20,
+                        }}
+                    >
+                        <Text
+                            style={{
+                                color: '#fff',
+                                fontWeight: 'bold',
+                                fontSize: responsiveFontSize(1.8),
+                                textAlign: 'center',
+                            }}
+                        >
+                            Learn More
+                        </Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
+
+            {/* testimonials */}
+
+            <ImageBackground
+                source={require("../../assets/bg-4.jpg")}
+                style={{ ...styles.backgroundImage, height: responsiveHeight(70) }}
+                blurRadius={7}
+            >
+                <View style={{ paddingVertical: responsiveHeight(5), paddingHorizontal: responsiveWidth(7), flexDirection: 'column', justifyContent: 'center', alignItems: "center" }}>
+                    <Text style={{ fontSize: responsiveFontSize(2.2), color: "#ffb700", borderWidth: 1, borderColor: "gray", width: responsiveWidth(33), paddingHorizontal: 13, borderRadius: 20, justifyContent: "center", paddingVertical: 5 }}>Testimonials </Text>
+                    <Text style={{ fontSize: responsiveFontSize(2.5), color: "#fff", marginVertical: responsiveHeight(3), fontWeight: 'bold' }}>What Our Viewers Say</Text>
+                    <View style={{ width: responsiveWidth(80), height: responsiveHeight(45), backgroundColor: "#FFFFFF1A", borderRadius: 10, padding: 20 }}>
+                        <View style={{ flexDirection: 'row', gap: 6 }}>
+                            <Icon name="star" size={25} color="#FFD700" />
+                            <Icon name="star" size={25} color="#FFD700" />
+                            <Icon name="star" size={25} color="#FFD700" />
+                            <Icon name="star" size={25} color="#FFD700" />
+                            <Icon name="star" size={25} color="#FFD700" />
+                        </View>
+                        <Text style={{ fontSize: responsiveFontSize(2), color: "#fff", marginTop: responsiveHeight(4) }}>As a language learner, Spanglish World Networks Inc. has been an invaluable resource for me. Their programming provides a unique blend of entertainment and education, helping me improve my language skills while staying entertained. I'm grateful for the quality content they provide.</Text>
+                        <View style={{ marginTop: responsiveHeight(4), flexDirection: "row", gap: 20, alignItems: 'center' }}>
+                            <Icon name="user" size={50} color="#FFD700" />
+                            <View style={{}}>
+                                <Text style={{ fontSize: responsiveFontSize(2), color: "#fff" }}>Carlos Martinez</Text>
+                                <Text style={{ fontSize: responsiveFontSize(2), color: "#FFD700" }}>Language Enthusiast</Text>
+                            </View>
+                        </View>
+                    </View>
+                </View>
+            </ImageBackground>
+
+            {/* From Our Channel */}
+
+            <View style={styles.aboutSection}>
+                <Text style={styles.aboutTopTitle}>From Our Channel</Text>
+                <Text style={styles.aboutTitle}>Get the bold insights and new perspectives</Text>
+                <TouchableOpacity style={{
+                    backgroundColor: '#FFD700', paddingVertical: responsiveHeight(1.5), borderRadius: responsiveWidth(10), width: responsiveWidth(35), marginVertical: responsiveHeight(2)
+                }} onPress={handleClick}>
+                    <Text style={{ color: '#fff', fontWeight: 'bold', fontSize: responsiveFontSize(2), textAlign: "center" }}>View More</Text>
+                </TouchableOpacity>
+
+            </View>
+
             <Footer />
         </ScrollView>
     );
@@ -309,7 +738,7 @@ const styles = StyleSheet.create({
     aboutSection: {
         backgroundColor: '#FFFFFF',
         paddingVertical: responsiveHeight(3),
-        paddingHorizontal: responsiveWidth(5)
+        paddingHorizontal: responsiveWidth(5),
     },
     aboutTopTitle: {
         fontSize: responsiveFontSize(2),
