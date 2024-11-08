@@ -1,13 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { View, TouchableOpacity, Image, StyleSheet, Animated, Text, Dimensions } from 'react-native';
+import { View, TouchableOpacity, Image, StyleSheet, Animated, Text, Dimensions, Linking } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {
     responsiveHeight,
     responsiveWidth,
 } from "react-native-responsive-dimensions";
-
+import { useDispatch, useSelector } from "react-redux";
 const screenHeight = Dimensions.get("window").height;
 const Header = ({ navigation, back }) => {
+    const dispatch = useDispatch();
     const [menuVisible, setMenuVisible] = useState(false);
     const translateX = useRef(new Animated.Value(-200)).current; // Initial position off-screen
 
@@ -29,12 +30,21 @@ const Header = ({ navigation, back }) => {
             }).start();
         }
     };
+    const handleLogout = () => {
+        dispatch({ type: "LOGIN", payload: null });
+        navigation.navigate("Login")
+    }
+
+    const handSwitch = () => {
+        const url = 'https://www.laportadacanada.com';
+        Linking.openURL(url).catch((err) => console.error('An error occurred', err));
+    };
 
     return (
         <>
             <View style={styles.container}>
                 <View style={styles.leftHeader}>
-                    {back && (
+                    {/* {back && (
                         <TouchableOpacity
                             onPress={() => navigation.goBack()}
                             style={styles.backButton}
@@ -43,7 +53,7 @@ const Header = ({ navigation, back }) => {
                         >
                             <Icon name="arrow-left" size={20} color="#000" />
                         </TouchableOpacity>
-                    )}
+                    )} */}
                     <TouchableOpacity
                         onPress={() => navigation.navigate('Home')}
                         accessibilityLabel="Go to Home"
@@ -74,23 +84,29 @@ const Header = ({ navigation, back }) => {
                     <TouchableOpacity onPress={() => { navigation.navigate('About'); toggleMenu(); }}>
                         <Text style={styles.menuItem}>About Us</Text>
                     </TouchableOpacity>
+                    <TouchableOpacity onPress={() => { navigation.navigate('Profile'); toggleMenu(); }}>
+                        <Text style={styles.menuItem}>Profile</Text>
+                    </TouchableOpacity>
                     <TouchableOpacity onPress={() => { navigation.navigate('Host'); toggleMenu(); }}>
                         <Text style={styles.menuItem}>Our Hosts</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={toggleMenu}>
+                    <TouchableOpacity onPress={() => { navigation.navigate('Network'); toggleMenu(); }}>
                         <Text style={styles.menuItem}>H.E.R.Network</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={toggleMenu}>
                         <Text style={styles.menuItem}>Spanglish Sports World</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={toggleMenu}>
+                    <TouchableOpacity onPress={() => { toggleMenu(); handSwitch(); }}>
                         <Text style={styles.menuItem}>La Portada Canadá</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={toggleMenu}>
                         <Text style={styles.menuItem}>Zingo Tv</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={toggleMenu}>
+                    <TouchableOpacity onPress={() => { navigation.navigate('Contact'); toggleMenu(); }}>
                         <Text style={styles.menuItem}>Contact</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => { toggleMenu(); handleLogout(); }}>
+                        <Text style={styles.menuItem}>Logout</Text>
                     </TouchableOpacity>
                 </Animated.View>
             )}

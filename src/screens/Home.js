@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { WebView } from 'react-native-webview';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { useSelector } from "react-redux";
 const screenWidth = Dimensions.get('window').width;
 const Home = ({ navigation }) => {
     const [isRunning, setIsRunning] = useState(false);
@@ -81,6 +82,18 @@ const Home = ({ navigation }) => {
             img: require('../../assets/host-14.png')
         },
     ]
+
+    const userData = useSelector(state => state.user.user);
+
+    useEffect(() => {
+        if (!userData) {
+            navigation.reset({
+                index: 0,
+                routes: [{ name: 'Login' }],
+            });
+        }
+    }, [])
+
 
     useEffect(() => {
         const interval = setInterval(() => {

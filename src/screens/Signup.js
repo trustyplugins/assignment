@@ -1,10 +1,9 @@
 import React from 'react';
-import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
+import axios from "axios";
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { responsiveHeight, responsiveWidth, responsiveFontSize } from 'react-native-responsive-dimensions';
-import { useNavigation } from '@react-navigation/native';
-
 const SignupSchema = Yup.object().shape({
     username: Yup.string()
         .min(3, 'Too Short!')
@@ -15,19 +14,30 @@ const SignupSchema = Yup.object().shape({
         .matches(/^[0-9]{10}$/, 'Invalid phone number')
         .required('Required'),
     password: Yup.string()
-        .min(6, 'Password is too short')
+        .min(3, 'Password is too short')
         .required('Required'),
 });
 
-export default function Signup() {
-    const navigation = useNavigation()
+export default function Signup({ navigation }) {
+    const handleSignup = async (values) => {
+        try {
+            const response = await axios.post('http://192.168.1.25:5000/api/signup', values, {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            })
+            navigation.navigate("Login")
+
+        } catch (error) {
+            console.log(error)
+        }
+
+    }
     return (
         <Formik
             initialValues={{ username: '', email: '', phone: '', password: '' }}
             validationSchema={SignupSchema}
-            onSubmit={(values) => {
-                console.log(values);
-            }}
+            onSubmit={handleSignup}
         >
             {({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (
                 <View style={styles.container}>

@@ -1,23 +1,36 @@
 import React from 'react';
 import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity } from 'react-native';
+import axios from "axios";
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { responsiveHeight, responsiveWidth, responsiveFontSize } from 'react-native-responsive-dimensions';
-import { useNavigation } from '@react-navigation/native';
+import { useDispatch, useSelector } from "react-redux";
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Required'),
   password: Yup.string().required('Required'),
 });
 
-export default function Login() {
-  const navigation = useNavigation()
+export default function Login({ navigation }) {
+  const dispatch = useDispatch();
+  const handleLogin = async (values) => {
+    try {
+      const response = await axios.post('http://192.168.1.25:5000/api/login', values, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      dispatch({ type: "LOGIN", payload: response.data.data });
+      navigation.navigate("Home")
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
   return (
     <Formik
       initialValues={{ email: '', password: '' }}
       validationSchema={LoginSchema}
-      onSubmit={(values) => {
-        console.log(values);
-      }}
+      onSubmit={handleLogin}
     >
       {({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (
         <View style={styles.container}>
