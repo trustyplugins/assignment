@@ -284,6 +284,7 @@ const About = ({ navigation }) => {
                     </TouchableOpacity>
                 </View>
             </View>
+
             <ImageBackground
                 source={require("../../assets/bg-2.jpg")}
                 style={styles.backgroundImage}

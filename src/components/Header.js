@@ -89,9 +89,6 @@ const Header = ({ navigation, back }) => {
                     <TouchableOpacity onPress={() => { navigation.navigate('About'); toggleMenu(); }}>
                         <Text style={styles.menuItem}>About Us</Text>
                     </TouchableOpacity>
-                    {userData && <TouchableOpacity onPress={() => { navigation.navigate('Profile'); toggleMenu(); }}>
-                        <Text style={styles.menuItem}>Profile</Text>
-                    </TouchableOpacity>}
                     <TouchableOpacity onPress={() => { navigation.navigate('Host'); toggleMenu(); }}>
                         <Text style={styles.menuItem}>Our Hosts</Text>
                     </TouchableOpacity>
@@ -110,6 +107,9 @@ const Header = ({ navigation, back }) => {
                     <TouchableOpacity onPress={() => { navigation.navigate('Contact'); toggleMenu(); }}>
                         <Text style={styles.menuItem}>Contact</Text>
                     </TouchableOpacity>
+                    {userData && <TouchableOpacity onPress={() => { navigation.navigate('Profile'); toggleMenu(); }}>
+                        <Text style={styles.menuItem}>Profile</Text>
+                    </TouchableOpacity>}
                     {
                         userData ? <TouchableOpacity onPress={() => { toggleMenu(); handleLogout(); }}>
                             <Text style={styles.menuItem}>Logout</Text>
