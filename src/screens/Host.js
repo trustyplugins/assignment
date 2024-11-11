@@ -90,7 +90,7 @@ const Host = ({ navigation }) => {
             }
 
 
-            <Footer />
+            <Footer navigation={navigation} />
         </ScrollView>
     );
 };

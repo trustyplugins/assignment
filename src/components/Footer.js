@@ -3,7 +3,61 @@ import { View, Text, Image, TouchableOpacity, Linking, StyleSheet, ScrollView } 
 import { responsiveHeight, responsiveWidth, responsiveFontSize } from 'react-native-responsive-dimensions';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-const Footer = () => {
+const pageLinks = [
+    {
+        name: "Home",
+        route: "Home"
+    },
+    {
+        name: "About Us",
+        route: "About"
+    },
+    {
+        name: "H.E.R Network",
+        route: "Network"
+    },
+    {
+        name: "Spanglish Sports Word",
+        route: "Sports"
+    },
+    {
+        name: "Contact Us",
+        route: "Contact"
+    },
+
+]
+const socialLinks = [
+    {
+        name: "facebook",
+        route: ""
+    },
+    {
+        name: "instagram",
+        route: "https://www.instagram.com/spanglishworldnetwk/%20/#"
+    },
+    {
+        name: "youtube",
+        route: "https://www.youtube.com/channel/UCqhugwyYvSPVn7M4N-oNN_A"
+    },
+    {
+        name: "linkedin",
+        route: "https://www.linkedin.com/company/spanglish-world-networks/"
+    }
+]
+
+const Footer = ({ navigation }) => {
+
+    const handSwitch = () => {
+        const url = 'https://www.laportadacanada.com';
+        Linking.openURL(url).catch((err) => console.error('An error occurred', err));
+    };
+
+    const handleIcons = (url) => {
+        if (url) {
+            Linking.openURL(url).catch((err) => console.error('An error occurred', err));
+        }
+    };
+
     return (
         <ScrollView>
             <View style={styles.container}>
@@ -29,11 +83,14 @@ const Footer = () => {
                 {/* Quick Links */}
                 <View style={styles.quickLinksContainer}>
                     <Text style={styles.sectionTitle}>Quick Links</Text>
-                    {['Home', 'About Us', 'H.E.R Network', 'Spanglish Sports Word', 'La Portada Canada', 'Zingo TV', 'Contact Us'].map((link, index) => (
-                        <TouchableOpacity key={index}>
-                            <Text style={styles.linkText}>{link}</Text>
+                    {pageLinks.map((link, index) => (
+                        <TouchableOpacity key={index} onPress={() => navigation.navigate(link.route)}>
+                            <Text style={styles.linkText}>{link.name}</Text>
                         </TouchableOpacity>
                     ))}
+                    <TouchableOpacity onPress={() => { handSwitch() }}>
+                        <Text style={styles.linkText}>La Portada Canadá</Text>
+                    </TouchableOpacity>
                 </View>
 
                 {/* General Office */}
@@ -71,9 +128,9 @@ const Footer = () => {
 
                 {/* Social Media Links */}
                 <View style={styles.socialMediaContainer}>
-                    {['facebook', 'instagram', 'youtube', 'linkedin'].map((iconName, index) => (
-                        <TouchableOpacity key={index} style={styles.socialIcon}>
-                            <Icon name={iconName} size={25} color="#FFF" />
+                    {socialLinks.map((iconName, index) => (
+                        <TouchableOpacity key={index} style={styles.socialIcon} onPress={() => { handleIcons(iconName.route) }}>
+                            <Icon name={iconName.name} size={25} color="#FFF" />
                         </TouchableOpacity>
                     ))}
                 </View>

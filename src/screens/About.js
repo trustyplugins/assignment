@@ -300,7 +300,7 @@ const About = ({ navigation }) => {
                 </View>
             </ImageBackground>
 
-            <Footer />
+            <Footer navigation={navigation}/>
         </ScrollView>
     );
 };

@@ -30,6 +30,7 @@ const Header = ({ navigation, back }) => {
             }).start();
         }
     };
+
     const handleLogout = () => {
         dispatch({ type: "LOGIN", payload: null });
         navigation.navigate("Login")
@@ -44,6 +45,7 @@ const Header = ({ navigation, back }) => {
         <>
             <View style={styles.container}>
                 <View style={styles.leftHeader}>
+
                     {/* {back && (
                         <TouchableOpacity
                             onPress={() => navigation.goBack()}
@@ -54,6 +56,8 @@ const Header = ({ navigation, back }) => {
                             <Icon name="arrow-left" size={20} color="#000" />
                         </TouchableOpacity>
                     )} */}
+
+
                     <TouchableOpacity
                         onPress={() => navigation.navigate('Home')}
                         accessibilityLabel="Go to Home"
@@ -93,7 +97,7 @@ const Header = ({ navigation, back }) => {
                     <TouchableOpacity onPress={() => { navigation.navigate('Network'); toggleMenu(); }}>
                         <Text style={styles.menuItem}>H.E.R.Network</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={toggleMenu}>
+                    <TouchableOpacity onPress={() => { navigation.navigate('Sports'); toggleMenu(); }}>
                         <Text style={styles.menuItem}>Spanglish Sports World</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => { toggleMenu(); handSwitch(); }}>

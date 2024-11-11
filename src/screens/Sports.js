@@ -5,20 +5,19 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { WebView } from 'react-native-webview';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import Icons from 'react-native-vector-icons/MaterialCommunityIcons';
 const screenWidth = Dimensions.get('window').width;
-const Network = ({ navigation }) => {
-
+const Sports = ({ navigation }) => {
     const [isRunning, setIsRunning] = useState(false);
     const [loadMore, setLoadMore] = useState(false);
     const [videoContent, setVideoContent] = useState({
         id: 1,
-        img: require("../../assets/th-1.jpg"),
-        title: "Knockout with Noel Clubb 31124",
-        subtitle: 'Knockout with Noel Clubb',
-        desc: "A look into the latest boxing news and matches with commentaries by an elite panel of boxing experts and special guests.",
-        desc1: "Special Guest: Jaye Byard, Ray Olubowale, Richard Solomon, Ryan Rannelli & Steve Beaupre.",
-        url: "https://www.youtube.com/watch?v=QN_1o1VoJZo"
+        img: require("../../assets/sp-1.jpg"),
+        title: "Candid Frank Live Leaf Talk 81124",
+        subtitle: 'Candid Frank Live Leaf Talk with Candid Frank Stanisci and Aaron Freeland',
+        desc: "Candid Frank Stanisci and Aaron Freeland take a look at the latest news about the Toronto Maple Leafs making.",
+        desc1: "#CandidFrankLive, Frank Stanisci, Aaron Freeland, Spanglish World Networks, Spanglish Sports World, H.E.R. Network, La Ronda del Dia, #LaPortadaCanada, Zingo TV, City of Toronto, National Hockey League (NHL), Toronto Maple Leafs, #AnaheimDucks, #ArizonaCoyotes, #BostonBruins, #BuffaloSabres, #CalgaryFlames, #CarolinaHurricanes, #ChicagoBlackhawks, #ColoradoAvalanche, #ColumbusBlueJackets, #DallasStars, #DetroitRedWings, #EdmontonOilers, #FloridaPanthers, #LosAngelesKings, #MinnesotaWild, #MontrealCanadiens, #NashvillePredators, #NewJerseyDevils, #NewYorkIslanders, #NewYorkRangers, #OttawaSenators, #PhiladelphiaFlyers, #PittsburghPenguins, #SanJoseSharks, #SeattleKraken, #StLouisBlues, #TampaBayLightning, #VancouverCanucks, #VegasGoldenKnights, #WashingtonCapitals, #WinnipegJets, American Hockey League, Toronto Marlies Hockey Club, Ontario Hockey League, MLSE (Maple Leaf Sports & Entertainment Partnership), Sportsnet, TSN - The Sports Network - Canada, CBC, CBC/Radio-Canada, CBC Sports, ESPN, ESPN+, Barley Sport, CBS, CBS News and Stations, CBS Sports, NHL Network, Madison Square Garden Sports Corp., CityTV Toronto, CTV News",
+        url: "https://www.youtube.com/watch?v=MXrMUn6NmFg"
     })
     const scaleAnim = useRef(new Animated.Value(1)).current;
     const scrollViewRef = useRef(null);
@@ -85,6 +84,7 @@ const Network = ({ navigation }) => {
     ]
 
 
+
     useEffect(() => {
         const interval = setInterval(() => {
             flatListRef.current?.scrollToOffset({
@@ -110,7 +110,7 @@ const Network = ({ navigation }) => {
         Linking.openURL(url).catch((err) => console.error('An error occurred', err));
     };
     const handleClick = () => {
-        const url = 'https://www.youtube.com/@HERNetworks';
+        const url = 'https://m.youtube.com/@SpanglishWorldNetwork';
         Linking.openURL(url).catch((err) => console.error('An error occurred', err));
     };
     const togglePlayPause = (data) => {
@@ -148,31 +148,32 @@ const Network = ({ navigation }) => {
     const latestShows = [
         {
             id: 1,
-            img: require("../../assets/net-shows-1.jpg"),
-            title: "Lead with Intention with Coach Ambereen Hameed 51124",
-            subtitle: 'Lead with Intention with Coach Ambereen Hameed',
-            desc: "Lead with Intention with Coach Ambereen Hameed.",
-            desc1: "This show is set out on an expedition to allow you a discovery to your BEST SELF! My intention is to bring forth many different topics related to better living, creating authentic relationships as we take a journey to unleash the best of who we are, tap into a new potential and build habits that will allow us to prioritize what truly matters. The intention of “Lead with Purpose” is to support you in your journey of life and you cultivate the life you were meant to LIVE! My hope is this show will embark you on a transformative path to be in gratitude, accept the unfolding of life and to commit to your values and dreams.",
-            url: "https://www.youtube.com/watch?v=VIsqWHvfwGU"
+            img: require("../../assets/sp-1.jpg"),
+            title: "Candid Frank Live Leaf Talk 81124",
+            subtitle: 'Candid Frank Live Leaf Talk with Candid Frank Stanisci and Aaron Freeland',
+            desc: "Candid Frank Stanisci and Aaron Freeland take a look at the latest news about the Toronto Maple Leafs making.",
+            desc1: "#CandidFrankLive, Frank Stanisci, Aaron Freeland, Spanglish World Networks, Spanglish Sports World, H.E.R. Network, La Ronda del Dia, #LaPortadaCanada, Zingo TV, City of Toronto, National Hockey League (NHL), Toronto Maple Leafs, #AnaheimDucks, #ArizonaCoyotes, #BostonBruins, #BuffaloSabres, #CalgaryFlames, #CarolinaHurricanes, #ChicagoBlackhawks, #ColoradoAvalanche, #ColumbusBlueJackets, #DallasStars, #DetroitRedWings, #EdmontonOilers, #FloridaPanthers, #LosAngelesKings, #MinnesotaWild, #MontrealCanadiens, #NashvillePredators, #NewJerseyDevils, #NewYorkIslanders, #NewYorkRangers, #OttawaSenators, #PhiladelphiaFlyers, #PittsburghPenguins, #SanJoseSharks, #SeattleKraken, #StLouisBlues, #TampaBayLightning, #VancouverCanucks, #VegasGoldenKnights, #WashingtonCapitals, #WinnipegJets, American Hockey League, Toronto Marlies Hockey Club, Ontario Hockey League, MLSE (Maple Leaf Sports & Entertainment Partnership), Sportsnet, TSN - The Sports Network - Canada, CBC, CBC/Radio-Canada, CBC Sports, ESPN, ESPN+, Barley Sport, CBS, CBS News and Stations, CBS Sports, NHL Network, Madison Square Garden Sports Corp., CityTV Toronto, CTV News",
+            url: "https://www.youtube.com/watch?v=MXrMUn6NmFg"
         },
         {
             id: 2,
-            img: require("../../assets/net-shows-2.jpg"),
-            title: "Elevate Your Life with Dr. Michelle Odette Green 261024",
-            subtitle: 'Elevate Your Life with Dr. Michelle Odette Green',
-            desc: "Welcome to 'Elevate Your Life,' this show is dedicated to empowering you to reach new heights of success and fulfillment.",
-            desc1: "Join us as we dive into the principles, strategies, and inspiring stories that will elevate your thoughts, expand your mindset, and ignite positive change in every area of your life. Get ready to embark on a journey of self-discovery, growth, and ultimate transformation. This is your time to rise and shine!",
-            url: "https://www.youtube.com/watch?v=14zEZj231SU&t=137s"
+            img: require("../../assets/sp-2.jpg"),
+            title: "Candid Frank CFL Talk with Frank Stanisci and David Morassutti 41124",
+            subtitle: 'Candid Frank CFL Talk with Frank Stanisci and David Morassutti',
+            desc: "Candid Frank Stanisci and David Morassutti take a deep dive into the headlines in the CFL",
+            desc1: "#candidfranklivecfltalk, #candidfrankliveshows, Frank Stanisci, David Morassutti, Canadian Football League, Canadian Football League Players' Association (CFLPA), Toronto Argonauts Football Club Inc., Hamilton Tiger-Cats Football Club, Calgary Stampeder Football Club, Alouettes de Montréal, Saskatchewan Roughrider Football Club Inc., BC Lions Football Club, Edmonton Elks, Spanglish World Networks, Spanglish Sports World, La Ronda del Dia, H.E.R. Network, Zingo TV, #LaPortadaCanada, Sportsnet, CBC Sports, TSN - The Sports Network - Canada, Corus Entertainment, Bell Media, Bell Media, Inc., Bell, Rogers Communications, CityTV Toronto, Disney Sports/ESPN Wide World of Sports, ESPN, CBS, NBCUniversal, USA Networks, Olympic Broadcasting Services, NBC Sports, CNN, CNN en Español, BBC, BBC News, FOX Sports, Grupo Televisa, Cisneros, Cisneros Media",
+            url: "https://www.youtube.com/watch?v=XqmNUn13av8"
         },
         {
             id: 3,
-            img: require("../../assets/net-shows-3.jpg"),
-            title: "Create Your Victorious Life with Cindy Gould 251024",
-            subtitle: 'Create Your Victorious Life with Cindy Gould',
-            desc: "These incredible people are each from different walks of life who will share their personal stories of resilience, perseverance, and triumph.",
-            desc1: "Their experiences will not only entertain and educate you, they will also ignite a fire under you to pursue the vision that God has placed in your heart with everything you've got!",
-            url: "https://www.youtube.com/watch?v=bxECddj4RL8&t=75s"
+            img: require("../../assets/sp-3.jpg"),
+            title: "Redefine Parenting with Veenu Keller 71124",
+            subtitle: 'Redefine Parenting with Veenu Keller',
+            desc: "Give Your Kids a Childhood They Won't Need To Heal From",
+            desc1: "#RedefineParenting, Veenu Keller, Veenu Inspires,The Neuroencoding Institute, #RobbinsResearchInternational, Campbell University, PeopleKeys, Inc., Michael V. Huber, MA, CMPC®, #FollowTheBallLLC, #TheFreshmanFoundation, EPIC Global Solutions, NCSA College Recruiting, Michigan State University, #UniversityofChicago, #JohnFKennedyUniversity, Spanglish World Networks, Spanglish Sports World, H.E.R. Network, La Ronda del Dia, Zingo TV, La Portada Canada, CityTV Toronto, Bell Media, Bell Media, Inc., Bell, Rogers Communications, Shaw Communications, Videotron, Corus Entertainment, Disney Television Studios, OWN: The Oprah Winfrey Network, Turner (Turner Broadcasting System, Inc), CNN, CNN en Español, CBS, CBS News and Stations, NBCUniversal, NBCUniversal Telemundo Enterprises, NBCUniversal Local, NBC News, CNBC, CNBC International, TV Azteca, Cisneros Media, Venevision, Univision, #parentingskills, #parentingtips, #parentinggoals, #parentingadvice, #parentingteens, #parenting101, #parentinghelp, #parentingjourney, #parentingwin, #parentingchallenges, #parentingsupport, #parentingplan, #mentalhealth, #teenempowerment, #teenmentalhealth, #teencoaching, #teenanxiety, #teentherapy, #childhealth",
+            url: "https://www.youtube.com/watch?v=cT6KLuZDkek"
         },
+
     ]
 
 
@@ -180,26 +181,22 @@ const Network = ({ navigation }) => {
     return (
         <ScrollView ref={scrollViewRef} contentContainerStyle={styles.container}>
             <ImageBackground
-                source={require("../../assets/net-bg.jpg")}
+                source={require("../../assets/sport-bg.jpg")}
                 style={styles.backgroundImage}
             >
                 <Header navigation={navigation} back={navigation.canGoBack() ? {} : null} />
 
                 {/* Text Content */}
                 <View style={styles.textContent}>
-                    <Text style={styles.topTitle}>The Best Content For YOU!</Text>
-                    <Text style={styles.title}>Welcome to H.E.R Network</Text>
-                    <Text style={styles.subtitle}>Immerse yourself in a world of inspiration, education, and entertainment that speaks to the diverse experiences and passions of women everywhere.</Text>
-                    <TouchableOpacity style={styles.button} onPress={handleClick}>
-                        <Text style={styles.buttonText}>Tell me more!</Text>
-                    </TouchableOpacity>
+                    <Text style={styles.title}>Spanglish Sports World</Text>
+                    <TouchableOpacity onPress={() => navigation.navigate("Home")}><Text style={styles.subtitle}>Home</Text></TouchableOpacity>
                 </View>
             </ImageBackground>
 
             {/* Our Channels Section */}
 
             <View style={styles.channelsSection}>
-                <Text style={styles.channelsTitle}>Our Channels</Text>
+                <Text style={styles.channelsTitle}>Spanglish Network</Text>
                 <View style={styles.channelIcons}>
                     <Image source={require('../../assets/ch-1.png')} style={styles.channelIcon} />
                     <Image source={require('../../assets/ch-2.png')} style={styles.channelIcon} />
@@ -211,9 +208,10 @@ const Network = ({ navigation }) => {
             {/* About Spanglish */}
 
             <View style={styles.aboutSection}>
-                <Text style={styles.aboutTopTitle}>About H.E.R Network</Text>
-                <Text style={styles.aboutTitle}>Embark on a visual journey of empowerment and inspiration</Text>
-                <Text style={styles.aboutDes}>Part of the Spanglish World family, the H.E.R. Network is a media network hosted, directed, produced and run by women for women. BarnBurner has always focused on giving a voice to the voiceless and in the media world women should have a bigger stage to voice those views. The recently launched network is guided by Canadian and legendary Reggae star Tanya Mullings and Sports journalist Nicole Monique Grey. </Text>
+                <Text style={styles.aboutTopTitle}>About Spanglish SportsNetwork</Text>
+                <Text style={styles.aboutTitle}>Unleashing the Power of Passion: Your Ultimate Destination for Sports Excellence</Text>
+                <Text style={styles.aboutDes}>We’re a community united by a passion for sports. Join us on this thrilling journey as we celebrate the triumphs, dissect the strategies, and revel in the sheer joy of sports excellence. Whether you’re a seasoned enthusiast or a newcomer to the game, there’s a place for you in our vibrant sports family.{'\n'} </Text>
+                <Text style={styles.aboutDes}>Get ready to dive into the world of sports like never before. The game is on, and the excitement is waiting for you!</Text>
                 <View>
                 </View>
             </View>
@@ -223,7 +221,7 @@ const Network = ({ navigation }) => {
             <View style={styles.latestShowsSection}>
                 <Text style={styles.sectionTitle}>Our Latest Shows</Text>
                 <TouchableOpacity style={styles.watchMoreButton} onPress={handleWatchMore}>
-                    <Text style={styles.watchMoreText}>Click here</Text>
+                    <Text style={styles.watchMoreText}>Clear Here</Text>
                 </TouchableOpacity>
 
                 <View style={styles.showCard}>
@@ -242,7 +240,7 @@ const Network = ({ navigation }) => {
                         <Text style={styles.showDescription}>
                             {videoContent.desc}.{'\n'}</Text>
                         {!loadMore ? <Text style={styles.showDescription}>
-                            {videoContent.desc1.substring(0, videoContent.desc1.length / 4)}... </Text> : <Text style={styles.showDescription}>
+                            {videoContent.desc1?.substring(0, videoContent.desc1.length / 4)}... </Text> : <Text style={styles.showDescription}>
                             {videoContent.desc1} </Text>}
                         <TouchableOpacity onPress={showMore}>
                             <Text style={{ color: "#FFD700", fontWeight: "bold", marginTop: 8, fontSize: 15 }}>{!loadMore ? "[+] Show More" : "[-] Show Less"}</Text>
@@ -285,7 +283,7 @@ const Network = ({ navigation }) => {
                                 </TouchableOpacity>
                                 <Text style={{ fontSize: 16, fontWeight: 'bold', marginTop: 5 }}>{item.subtitle}</Text>
                                 <Text style={{ fontSize: 14, color: 'gray', marginTop: 3 }}>
-                                    {item.desc.substring(0, item.desc.length / 2)}...
+                                    {item.desc?.substring(0, item.desc.length / 2)}...
                                 </Text>
                             </View>
                         ))
@@ -299,13 +297,13 @@ const Network = ({ navigation }) => {
                 style={styles.backgroundImage}
             >
                 <View style={{ paddingVertical: responsiveHeight(7), paddingHorizontal: responsiveWidth(7) }}>
-                    <Text style={{ fontSize: responsiveFontSize(2.2), color: "#ffb700", borderWidth: 1, borderColor: "gray", width: responsiveWidth(45), paddingHorizontal: 11, borderRadius: 20, justifyContent: "center", paddingVertical: 5 }}>Enjoy Our shows </Text>
-                    <Text style={{ fontSize: responsiveFontSize(2.5), color: "#fff", marginVertical: responsiveHeight(3), fontWeight: 'bold' }}>Stay in the loop with the latest video releases.</Text>
-                    <Text style={{ fontSize: responsiveFontSize(1.7), color: "#fff" }}>Discover content that resonates with you, featuring real women sharing their stories and expertise.</Text>
+                    <Text style={{ fontSize: responsiveFontSize(2.2), color: "#ffb700", borderWidth: 1, borderColor: "gray", width: responsiveWidth(65), paddingHorizontal: 11, borderRadius: 20, justifyContent: "center", paddingVertical: 5 }}>Enjoy Spanglish Sports world</Text>
+                    <Text style={{ fontSize: responsiveFontSize(2.5), color: "#fff", marginVertical: responsiveHeight(3), fontWeight: 'bold' }}>Unleashing the Power of Passion: Your Ultimate Destination for Sports Excellence</Text>
+                    <Text style={{ fontSize: responsiveFontSize(1.7), color: "#fff" }}>Welcome to our dynamic sports hub, where the thrill of competition meets the artistry of athleticism! Whether you’re a die-hard fan, a casual observer, or a budding athlete, Spanglish Sports World is your go-to source for the latest updates, insightful analyses, and a celebration of the incredible world of sports.</Text>
                     <TouchableOpacity style={{
                         backgroundColor: '#FFD700', paddingVertical: responsiveHeight(1.5), borderRadius: responsiveWidth(10), width: responsiveWidth(42), marginVertical: responsiveHeight(4)
                     }} onPress={handleClick}>
-                        <Text style={{ color: '#fff', fontWeight: 'bold', fontSize: responsiveFontSize(2), textAlign: "center" }}>Tune For New shows</Text>
+                        <Text style={{ color: '#fff', fontWeight: 'bold', fontSize: responsiveFontSize(2), textAlign: "center" }}>Tune Fore More</Text>
                     </TouchableOpacity>
                 </View>
             </ImageBackground>
@@ -383,7 +381,7 @@ const Network = ({ navigation }) => {
                         marginBottom: responsiveHeight(1),
                     }}
                 >
-                    WHY CHOOSE US
+                    Sport News
                 </Text>
                 <Text
                     style={{
@@ -394,7 +392,7 @@ const Network = ({ navigation }) => {
                         marginBottom: responsiveHeight(1.5),
                     }}
                 >
-                    Why you must whatch our shows
+                    Why you must watch our content
                 </Text>
                 <Text
                     style={{
@@ -404,7 +402,7 @@ const Network = ({ navigation }) => {
                         marginBottom: responsiveHeight(3),
                     }}
                 >
-                    H.E.R Network provides a space for diverse voices, empowers and represents women, builds a supportive community, offers educational content, and contributes to breaking stereotypes and challenging norms.
+                    We believe that sports are more than just games; they’re a shared experience that brings people together. Join the conversation with fellow fans in our vibrant community. Share your insights, engage in friendly debates, and revel in the camaraderie that makes being a sports fan truly special.
                 </Text>
 
                 {/* Card Section */}
@@ -431,7 +429,7 @@ const Network = ({ navigation }) => {
                             marginBottom: responsiveHeight(2),
                         }}
                     >
-                        <Ionicons name="flower" size={40} color="#FFF" />
+                        <Icon name="star" size={40} color="#FFF" />
                     </View>
                     <Text
                         style={{
@@ -441,7 +439,7 @@ const Network = ({ navigation }) => {
                             marginBottom: responsiveHeight(1),
                         }}
                     >
-                        Use your Voice
+                        Breaking News and Highlights
                     </Text>
                     <Text
                         style={{
@@ -451,7 +449,7 @@ const Network = ({ navigation }) => {
                             marginBottom: responsiveHeight(2),
                         }}
                     >
-                        Gain a deeper understanding of various aspects of life, culture, and personal development from the diverse voices of women.
+                        Catch the pulse of the sporting world with our real-time updates on breaking news, scores, and highlights, Immerse yourself in the action of your favorite sports.
                     </Text>
                     <TouchableOpacity
                         style={{
@@ -490,13 +488,13 @@ const Network = ({ navigation }) => {
                 >
                     <View
                         style={{
-                            backgroundColor: '#FFD700', // yellow background for icon
+                            backgroundColor: '#FFD700',
                             borderRadius: 10,
                             padding: responsiveWidth(3),
                             marginBottom: responsiveHeight(2),
                         }}
                     >
-                        <Icon name="heart" size={40} color="#FFF" />
+                        <Icons name="snowflake" size={40} color="#FFF" />
                     </View>
                     <Text
                         style={{
@@ -506,7 +504,7 @@ const Network = ({ navigation }) => {
                             marginBottom: responsiveHeight(1),
                         }}
                     >
-                        Empowerment
+                        In-Depth Analyses and Features
                     </Text>
                     <Text
                         style={{
@@ -516,7 +514,7 @@ const Network = ({ navigation }) => {
                             marginBottom: responsiveHeight(2),
                         }}
                     >
-                        Pursue their passions and goals, feel empowered and inspired with our content created for women to women. We are POWERFULL
+                        Our team of seasoned sports analysts goes beyond the scoreboard; provide you with thought-provoking analyses, player profiles, and more.
                     </Text>
                     <TouchableOpacity
                         style={{
@@ -555,13 +553,13 @@ const Network = ({ navigation }) => {
                 >
                     <View
                         style={{
-                            backgroundColor: '#FFD700', // yellow background for icon
+                            backgroundColor: '#FFD700',
                             borderRadius: 10,
                             padding: responsiveWidth(3),
                             marginBottom: responsiveHeight(2),
                         }}
                     >
-                        <Icon name="book" size={40} color="#FFF" />
+                        <Icons name="basketball" size={40} color="#FFF" />
                     </View>
                     <Text
                         style={{
@@ -571,7 +569,7 @@ const Network = ({ navigation }) => {
                             marginBottom: responsiveHeight(1),
                         }}
                     >
-                        Learn something new
+                        Training Tips and Fitness Insights
                     </Text>
                     <Text
                         style={{
@@ -581,7 +579,7 @@ const Network = ({ navigation }) => {
                             marginBottom: responsiveHeight(2),
                         }}
                     >
-                        gain insights into various subjects such as career development, health and wellness, relationships,  personal growth and knowledge enhancement.
+                        Explore expert training tips, nutritional advice, and wellness insights to help you elevate your game and achieve peak performance.
                     </Text>
                     <TouchableOpacity
                         style={{
@@ -604,36 +602,6 @@ const Network = ({ navigation }) => {
                     </TouchableOpacity>
                 </View>
             </View>
-
-            {/* testimonials */}
-
-            <ImageBackground
-                source={require("../../assets/bg-4.jpg")}
-                style={{ ...styles.backgroundImage, height: responsiveHeight(70) }}
-                blurRadius={7}
-            >
-                <View style={{ paddingVertical: responsiveHeight(5), paddingHorizontal: responsiveWidth(7), flexDirection: 'column', justifyContent: 'center', alignItems: "center" }}>
-                    <Text style={{ fontSize: responsiveFontSize(2.2), color: "#ffb700", borderWidth: 1, borderColor: "gray", width: responsiveWidth(33), paddingHorizontal: 13, borderRadius: 20, justifyContent: "center", paddingVertical: 5 }}>Testimonials </Text>
-                    <Text style={{ fontSize: responsiveFontSize(2.5), color: "#fff", marginVertical: responsiveHeight(3), fontWeight: 'bold' }}>What Our Viewers Say</Text>
-                    <View style={{ width: responsiveWidth(80), height: responsiveHeight(45), backgroundColor: "#FFFFFF1A", borderRadius: 10, padding: 20 }}>
-                        <View style={{ flexDirection: 'row', gap: 6 }}>
-                            <Icon name="star" size={25} color="#FFD700" />
-                            <Icon name="star" size={25} color="#FFD700" />
-                            <Icon name="star" size={25} color="#FFD700" />
-                            <Icon name="star" size={25} color="#FFD700" />
-                            <Icon name="star" size={25} color="#FFD700" />
-                        </View>
-                        <Text style={{ fontSize: responsiveFontSize(2), color: "#fff", marginTop: responsiveHeight(4) }}>As a language learner, Spanglish World Networks Inc. has been an invaluable resource for me. Their programming provides a unique blend of entertainment and education, helping me improve my language skills while staying entertained. I'm grateful for the quality content they provide.</Text>
-                        <View style={{ marginTop: responsiveHeight(4), flexDirection: "row", gap: 20, alignItems: 'center' }}>
-                            <Icon name="user" size={50} color="#FFD700" />
-                            <View style={{}}>
-                                <Text style={{ fontSize: responsiveFontSize(2), color: "#fff" }}>Carlos Martinez</Text>
-                                <Text style={{ fontSize: responsiveFontSize(2), color: "#FFD700" }}>Language Enthusiast</Text>
-                            </View>
-                        </View>
-                    </View>
-                </View>
-            </ImageBackground>
 
             {/* From Our Channel */}
 
@@ -653,7 +621,7 @@ const Network = ({ navigation }) => {
     );
 };
 
-export default Network;
+export default Sports;
 
 const styles = StyleSheet.create({
     container: {
@@ -661,7 +629,7 @@ const styles = StyleSheet.create({
     },
     backgroundImage: {
         width: responsiveWidth(100),
-        height: responsiveHeight(55),
+        height: responsiveHeight(50),
         justifyContent: 'space-between',
     },
     topBar: {

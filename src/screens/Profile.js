@@ -21,7 +21,7 @@ const Profile = ({ navigation }) => {
                     <TouchableOpacity onPress={() => navigation.navigate("Home")}><Text style={styles.subtitle}>+91- {userData.phone}</Text></TouchableOpacity>
                 </View>
             </ImageBackground>
-            <Footer />
+            <Footer navigation={navigation}/>
         </ScrollView>
     );
 };

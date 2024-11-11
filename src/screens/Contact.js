@@ -1,11 +1,17 @@
 import React, { useEffect, useRef } from 'react';
-import { View, Text, ImageBackground, TouchableOpacity, Image, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, ImageBackground, TouchableOpacity, Image, StyleSheet, ScrollView, TextInput } from 'react-native';
 import { responsiveHeight, responsiveWidth, responsiveFontSize } from 'react-native-responsive-dimensions';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import MapView, { Marker } from 'react-native-maps';
 const Contact = ({ navigation }) => {
-
+    const addressCoordinate = {
+        latitude: 43.6418,
+        longitude: -79.3762,
+        latitudeDelta: 0.01,
+        longitudeDelta: 0.01,
+    };
 
     return (
         <ScrollView contentContainerStyle={styles.container}>
@@ -121,9 +127,43 @@ const Contact = ({ navigation }) => {
                         <Icon name="youtube" size={responsiveFontSize(2.5)} color="#FF0000" />
                     </TouchableOpacity>
                 </View>
+
             </View>
 
-            <Footer />
+            <View style={styles.contactContainer}>
+                <Text style={styles.headerText}>Send us a message</Text>
+                <Text style={styles.subHeaderText}>
+                    Have a question about our content, services, or any other inquiries?
+                </Text>
+
+                <Text style={styles.labelText}>Your Name</Text>
+                <TextInput style={styles.input} placeholder="Enter your name" />
+
+                <Text style={styles.labelText}>Your Email</Text>
+                <TextInput style={styles.input} placeholder="Enter your email" keyboardType="email-address" />
+
+                <Text style={styles.labelText}>Your Message (Optional)</Text>
+                <TextInput
+                    style={[styles.input, styles.messageInput]}
+                    placeholder="Enter your message"
+                    multiline
+                    numberOfLines={4}
+                />
+
+                <TouchableOpacity style={styles.submitButton}>
+                    <Text style={styles.submitButtonText}>Submit</Text>
+                </TouchableOpacity>
+                <View style={styles.mapContainer}>
+                    <MapView
+                        style={styles.map}
+                        initialRegion={addressCoordinate}
+                    >
+                        <Marker coordinate={addressCoordinate} title="Our Location" description="20 Bay Street, 11th Floor, Toronto, Ontario, M5J 2N8" />
+                    </MapView>
+                </View>
+            </View>
+
+            <Footer navigation={navigation} />
         </ScrollView>
     );
 };
@@ -212,5 +252,61 @@ const styles = StyleSheet.create({
         marginTop: responsiveHeight(2.2),
         borderBottomColor: '#CCC',
         borderBottomWidth: 1,
+    },
+    contactContainer: {
+        padding: responsiveWidth(5),
+        backgroundColor: '#fff',
+    },
+    headerText: {
+        fontSize: responsiveFontSize(3),
+        fontWeight: 'bold',
+        textAlign: 'center',
+        marginBottom: responsiveHeight(1),
+    },
+    subHeaderText: {
+        fontSize: responsiveFontSize(2),
+        textAlign: 'center',
+        color: '#666',
+        marginBottom: responsiveHeight(2),
+    },
+    labelText: {
+        fontSize: responsiveFontSize(2),
+        fontWeight: 'bold',
+        marginBottom: responsiveHeight(0.5),
+    },
+    input: {
+        width: '100%',
+        height: responsiveHeight(5),
+        borderColor: '#ccc',
+        borderWidth: 1,
+        borderRadius: 5,
+        paddingHorizontal: responsiveWidth(2),
+        marginBottom: responsiveHeight(1.5),
+        backgroundColor: '#f8f8f8',
+    },
+    messageInput: {
+        height: responsiveHeight(15),
+        textAlignVertical: 'top',
+    },
+    submitButton: {
+        backgroundColor: '#FFD700',
+        paddingVertical: responsiveHeight(1.5),
+        borderRadius: 5,
+        alignItems: 'center',
+        marginBottom: responsiveHeight(2),
+    },
+    submitButtonText: {
+        fontSize: responsiveFontSize(2),
+        color: '#fff',
+        fontWeight: 'bold',
+    },
+    mapContainer: {
+        height: responsiveHeight(30),
+        borderRadius: 10,
+        overflow: 'hidden',
+    },
+    map: {
+        width: '100%',
+        height: '100%',
     },
 });

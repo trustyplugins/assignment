@@ -659,7 +659,7 @@ const Home = ({ navigation }) => {
 
             </View>
 
-            <Footer />
+            <Footer navigation={navigation} />
         </ScrollView>
     );
 };
