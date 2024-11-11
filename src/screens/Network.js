@@ -13,12 +13,12 @@ const Network = ({ navigation }) => {
     const [loadMore, setLoadMore] = useState(false);
     const [videoContent, setVideoContent] = useState({
         id: 1,
-        img: require("../../assets/th-1.jpg"),
-        title: "Knockout with Noel Clubb 31124",
-        subtitle: 'Knockout with Noel Clubb',
-        desc: "A look into the latest boxing news and matches with commentaries by an elite panel of boxing experts and special guests.",
-        desc1: "Special Guest: Jaye Byard, Ray Olubowale, Richard Solomon, Ryan Rannelli & Steve Beaupre.",
-        url: "https://www.youtube.com/watch?v=QN_1o1VoJZo"
+        img: require("../../assets/net-shows-1.jpg"),
+        title: "Lead with Intention with Coach Ambereen Hameed 51124",
+        subtitle: 'Lead with Intention with Coach Ambereen Hameed',
+        desc: "Lead with Intention with Coach Ambereen Hameed.",
+        desc1: "This show is set out on an expedition to allow you a discovery to your BEST SELF! My intention is to bring forth many different topics related to better living, creating authentic relationships as we take a journey to unleash the best of who we are, tap into a new potential and build habits that will allow us to prioritize what truly matters. The intention of “Lead with Purpose” is to support you in your journey of life and you cultivate the life you were meant to LIVE! My hope is this show will embark you on a transformative path to be in gratitude, accept the unfolding of life and to commit to your values and dreams.",
+        url: "https://www.youtube.com/watch?v=VIsqWHvfwGU"
     })
     const scaleAnim = useRef(new Animated.Value(1)).current;
     const scrollViewRef = useRef(null);
