@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { View, Text, ImageBackground, TouchableOpacity, Image, StyleSheet, ScrollView, TextInput } from 'react-native';
+import { View, Text, ImageBackground, TouchableOpacity, Image, StyleSheet, ScrollView, TextInput, Linking } from 'react-native';
 import { responsiveHeight, responsiveWidth, responsiveFontSize } from 'react-native-responsive-dimensions';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -11,6 +11,28 @@ const Contact = ({ navigation }) => {
         longitude: -79.3762,
         latitudeDelta: 0.01,
         longitudeDelta: 0.01,
+    };
+    const socialLinks = [
+        {
+            name: "facebook",
+            route: "",
+            color: "#3b5998"
+        },
+        {
+            name: "youtube",
+            route: "https://www.youtube.com/channel/UCqhugwyYvSPVn7M4N-oNN_A",
+            color: "#FF0000"
+        },
+        {
+            name: "linkedin",
+            route: "https://www.linkedin.com/company/spanglish-world-networks/",
+            color: "#0077B5"
+        }
+    ]
+    const handleIcons = (url) => {
+        if (url) {
+            Linking.openURL(url).catch((err) => console.error('An error occurred', err));
+        }
     };
 
     return (
@@ -79,53 +101,25 @@ const Contact = ({ navigation }) => {
                 </Text>
 
                 <View style={{ flexDirection: 'row' }}>
-                    {/* Facebook Icon */}
-                    <TouchableOpacity
-                        style={{
-                            width: responsiveWidth(10),
-                            height: responsiveWidth(10),
-                            borderWidth: 1,
-                            borderColor: '#DDD',
-                            borderRadius: responsiveWidth(2),
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            marginHorizontal: responsiveWidth(1),
-                        }}
-                    >
-                        <Icon name="facebook" size={responsiveFontSize(2.5)} color="#3b5998" />
-                    </TouchableOpacity>
+                    {
+                        socialLinks.map((item, index) => (
+                            <TouchableOpacity key={index} onPress={() => handleIcons(item.route)}
+                                style={{
+                                    width: responsiveWidth(10),
+                                    height: responsiveWidth(10),
+                                    borderWidth: 1,
+                                    borderColor: '#DDD',
+                                    borderRadius: responsiveWidth(2),
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    marginHorizontal: responsiveWidth(1),
+                                }}
+                            >
+                                <Icon name={item.name} size={responsiveFontSize(2.5)} color={item.color} />
+                            </TouchableOpacity>
+                        ))
+                    }
 
-                    {/* LinkedIn Icon */}
-                    <TouchableOpacity
-                        style={{
-                            width: responsiveWidth(10),
-                            height: responsiveWidth(10),
-                            borderWidth: 1,
-                            borderColor: '#DDD',
-                            borderRadius: responsiveWidth(2),
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            marginHorizontal: responsiveWidth(1),
-                        }}
-                    >
-                        <Icon name="linkedin" size={responsiveFontSize(2.5)} color="#0077B5" />
-                    </TouchableOpacity>
-
-                    {/* YouTube Icon */}
-                    <TouchableOpacity
-                        style={{
-                            width: responsiveWidth(10),
-                            height: responsiveWidth(10),
-                            borderWidth: 1,
-                            borderColor: '#DDD',
-                            borderRadius: responsiveWidth(2),
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            marginHorizontal: responsiveWidth(1),
-                        }}
-                    >
-                        <Icon name="youtube" size={responsiveFontSize(2.5)} color="#FF0000" />
-                    </TouchableOpacity>
                 </View>
 
             </View>
