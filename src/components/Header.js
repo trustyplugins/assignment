@@ -11,6 +11,7 @@ const Header = ({ navigation, back }) => {
     const dispatch = useDispatch();
     const [menuVisible, setMenuVisible] = useState(false);
     const translateX = useRef(new Animated.Value(-200)).current; // Initial position off-screen
+    const userData = useSelector(state => state.user.user);
 
     const toggleMenu = () => {
         if (menuVisible) {
@@ -88,9 +89,9 @@ const Header = ({ navigation, back }) => {
                     <TouchableOpacity onPress={() => { navigation.navigate('About'); toggleMenu(); }}>
                         <Text style={styles.menuItem}>About Us</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => { navigation.navigate('Profile'); toggleMenu(); }}>
+                    {userData && <TouchableOpacity onPress={() => { navigation.navigate('Profile'); toggleMenu(); }}>
                         <Text style={styles.menuItem}>Profile</Text>
-                    </TouchableOpacity>
+                    </TouchableOpacity>}
                     <TouchableOpacity onPress={() => { navigation.navigate('Host'); toggleMenu(); }}>
                         <Text style={styles.menuItem}>Our Hosts</Text>
                     </TouchableOpacity>
@@ -109,9 +110,14 @@ const Header = ({ navigation, back }) => {
                     <TouchableOpacity onPress={() => { navigation.navigate('Contact'); toggleMenu(); }}>
                         <Text style={styles.menuItem}>Contact</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => { toggleMenu(); handleLogout(); }}>
-                        <Text style={styles.menuItem}>Logout</Text>
-                    </TouchableOpacity>
+                    {
+                        userData ? <TouchableOpacity onPress={() => { toggleMenu(); handleLogout(); }}>
+                            <Text style={styles.menuItem}>Logout</Text>
+                        </TouchableOpacity> : <TouchableOpacity onPress={() => { toggleMenu(); navigation.navigate("Login") }}>
+                            <Text style={styles.menuItem}>Login</Text>
+                        </TouchableOpacity>
+                    }
+
                 </Animated.View>
             )}
         </>

@@ -17,11 +17,11 @@ const Profile = ({ navigation }) => {
 
                 {/* Text Content */}
                 <View style={styles.textContent}>
-                    <Text style={styles.title}>{userData.username}</Text>
-                    <TouchableOpacity onPress={() => navigation.navigate("Home")}><Text style={styles.subtitle}>+91- {userData.phone}</Text></TouchableOpacity>
+                    <Text style={styles.title}>{userData?.username}</Text>
+                    <TouchableOpacity onPress={() => navigation.navigate("Home")}><Text style={styles.subtitle}>+91- {userData?.phone}</Text></TouchableOpacity>
                 </View>
             </ImageBackground>
-            <Footer navigation={navigation}/>
+            <Footer navigation={navigation} />
         </ScrollView>
     );
 };

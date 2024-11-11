@@ -10,6 +10,7 @@ const LoginSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Required'),
   password: Yup.string().required('Required'),
 });
+import Header from '../components/Header';
 
 export default function Login({ navigation }) {
   const [apiError, setApiError] = useState(null);
@@ -43,10 +44,7 @@ export default function Login({ navigation }) {
         source={require("../../assets/media-event.jpg")}
         style={styles.backgroundImage}
       >
-        <Image
-          source={require('../../assets/logo.png')}
-          style={styles.logo}
-        />
+        <Header navigation={navigation} back={navigation.canGoBack() ? {} : null} />
 
         {/* Text Content */}
         <View style={styles.textContent}>
