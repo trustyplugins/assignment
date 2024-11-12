@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { View, TouchableOpacity, Image, StyleSheet, Animated, Text, Dimensions, Linking } from 'react-native';
+import { View, TouchableOpacity, Image, StyleSheet, Animated, Text, Dimensions, Linking, Pressable } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {
     responsiveHeight,
@@ -79,46 +79,48 @@ const Header = ({ navigation, back }) => {
             </View>
 
             {menuVisible && (
-                <Animated.View style={[styles.menu, { transform: [{ translateX }] }]}>
-                    <TouchableOpacity onPress={toggleMenu} style={styles.closeButton}>
-                        <Icon name="times" size={30} color="#FFD700" />
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => { navigation.navigate('Home'); toggleMenu(); }}>
-                        <Text style={styles.menuItem}>Home</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => { navigation.navigate('About'); toggleMenu(); }}>
-                        <Text style={styles.menuItem}>About Us</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => { navigation.navigate('Host'); toggleMenu(); }}>
-                        <Text style={styles.menuItem}>Our Hosts</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => { navigation.navigate('Network'); toggleMenu(); }}>
-                        <Text style={styles.menuItem}>H.E.R.Network</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => { navigation.navigate('Sports'); toggleMenu(); }}>
-                        <Text style={styles.menuItem}>Spanglish Sports World</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => { toggleMenu(); handSwitch(); }}>
-                        <Text style={styles.menuItem}>La Portada Canadá</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={toggleMenu}>
-                        <Text style={styles.menuItem}>Zingo Tv</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => { navigation.navigate('Contact'); toggleMenu(); }}>
-                        <Text style={styles.menuItem}>Contact</Text>
-                    </TouchableOpacity>
-                    {userData && <TouchableOpacity onPress={() => { navigation.navigate('Profile'); toggleMenu(); }}>
-                        <Text style={styles.menuItem}>Profile</Text>
-                    </TouchableOpacity>}
-                    {
-                        userData ? <TouchableOpacity onPress={() => { toggleMenu(); handleLogout(); }}>
-                            <Text style={styles.menuItem}>Logout</Text>
-                        </TouchableOpacity> : <TouchableOpacity onPress={() => { toggleMenu(); navigation.navigate("Login") }}>
-                            <Text style={styles.menuItem}>Login</Text>
+                <Pressable style={styles.overlay} onPress={toggleMenu}>
+                    <Animated.View style={[styles.menu, { transform: [{ translateX }] }]}>
+                        <TouchableOpacity onPress={toggleMenu} style={styles.closeButton}>
+                            <Icon name="times" size={30} color="#FFD700" />
                         </TouchableOpacity>
-                    }
+                        <TouchableOpacity onPress={() => { navigation.navigate('Home'); toggleMenu(); }}>
+                            <Text style={styles.menuItem}>Home</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => { navigation.navigate('About'); toggleMenu(); }}>
+                            <Text style={styles.menuItem}>About Us</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => { navigation.navigate('Host'); toggleMenu(); }}>
+                            <Text style={styles.menuItem}>Our Hosts</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => { navigation.navigate('Network'); toggleMenu(); }}>
+                            <Text style={styles.menuItem}>H.E.R.Network</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => { navigation.navigate('Sports'); toggleMenu(); }}>
+                            <Text style={styles.menuItem}>Spanglish Sports World</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => { toggleMenu(); handSwitch(); }}>
+                            <Text style={styles.menuItem}>La Portada Canadá</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={toggleMenu}>
+                            <Text style={styles.menuItem}>Zingo Tv</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => { navigation.navigate('Contact'); toggleMenu(); }}>
+                            <Text style={styles.menuItem}>Contact</Text>
+                        </TouchableOpacity>
+                        {userData && <TouchableOpacity onPress={() => { navigation.navigate('Profile'); toggleMenu(); }}>
+                            <Text style={styles.menuItem}>Profile</Text>
+                        </TouchableOpacity>}
+                        {
+                            userData ? <TouchableOpacity onPress={() => { toggleMenu(); handleLogout(); }}>
+                                <Text style={styles.menuItem}>Logout</Text>
+                            </TouchableOpacity> : <TouchableOpacity onPress={() => { toggleMenu(); navigation.navigate("Login") }}>
+                                <Text style={styles.menuItem}>Login</Text>
+                            </TouchableOpacity>
+                        }
 
-                </Animated.View>
+                    </Animated.View>
+                </Pressable>
             )}
         </>
     );
@@ -178,6 +180,15 @@ const styles = StyleSheet.create({
         paddingHorizontal: responsiveWidth(3),
         fontSize: 16,
         color: '#333',
+    },
+    overlay: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: 'transparent',
+        zIndex: 999,
     },
 });
 
