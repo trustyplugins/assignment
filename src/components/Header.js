@@ -36,7 +36,10 @@ const Header = ({ navigation, back }) => {
 
     const handleLogout = () => {
         dispatch({ type: "LOGIN", payload: null });
-        navigation.navigate("Login")
+        navigation.reset({
+            index: 0,
+            routes: [{ name: 'Login' }],
+        });
     }
 
     const handSwitch = () => {

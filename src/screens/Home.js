@@ -178,6 +178,7 @@ const Home = ({ navigation }) => {
                                 uri: videoContent.url
                             }}
                             allowsFullscreenVideo={false}
+                            mediaPlaybackRequiresUserAction={true}
                         />
                     </TouchableOpacity>
                     <View style={styles.showContent}>
