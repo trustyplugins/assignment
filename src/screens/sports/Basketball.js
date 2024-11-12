@@ -95,6 +95,7 @@ const styles = StyleSheet.create({
         width: responsiveWidth(100),
         height: responsiveHeight(50),
         justifyContent: 'space-between',
+        paddingTop: responsiveHeight(22)
     },
     topBar: {
         flexDirection: 'row',

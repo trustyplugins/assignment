@@ -16,7 +16,7 @@ const About = ({ navigation }) => {
         }
     }
     return (
-        <ScrollView ref={scrollViewRef}  contentContainerStyle={styles.container}>
+        <ScrollView ref={scrollViewRef} contentContainerStyle={styles.container}>
 
             <ImageBackground
                 source={require("../../assets/about-bg.jpg")}
@@ -324,6 +324,7 @@ const styles = StyleSheet.create({
         width: responsiveWidth(100),
         height: responsiveHeight(50),
         justifyContent: 'space-between',
+        paddingTop: responsiveHeight(20)
     },
     topBar: {
         flexDirection: 'row',

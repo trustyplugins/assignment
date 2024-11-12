@@ -7,6 +7,7 @@ import {
 } from "react-native-responsive-dimensions";
 import { useDispatch, useSelector } from "react-redux";
 const screenHeight = Dimensions.get("window").height;
+
 const Header = ({ navigation, back }) => {
     const dispatch = useDispatch();
     const [menuVisible, setMenuVisible] = useState(false);
@@ -50,43 +51,33 @@ const Header = ({ navigation, back }) => {
     return (
         <>
             <View style={styles.container}>
-                <View style={styles.leftHeader}>
-
-                    {/* {back && (
+                <View style={styles.containerChild}>
+                    <View style={styles.leftHeader}>
                         <TouchableOpacity
-                            onPress={() => navigation.goBack()}
-                            style={styles.backButton}
-                            accessibilityLabel="Go back"
+                            onPress={() => navigation.navigate('Home')}
+                            accessibilityLabel="Go to Home"
                             accessible={true}
                         >
-                            <Icon name="arrow-left" size={20} color="#000" />
+                            <Image
+                                source={require('../../assets/logo.png')}
+                                style={styles.logo}
+                            />
                         </TouchableOpacity>
-                    )} */}
+                    </View>
 
-
-                    <TouchableOpacity
-                        onPress={() => navigation.navigate('Home')}
-                        accessibilityLabel="Go to Home"
-                        accessible={true}
-                    >
-                        <Image
-                            source={require('../../assets/logo.png')}
-                            style={styles.logo}
-                        />
-                    </TouchableOpacity>
+                    <View style={styles.buttonsContainer}>
+                        <TouchableOpacity onPress={() => toggleMenu()} style={styles.menuButton}>
+                            <Icon name="bars" size={24} color="#000" />
+                        </TouchableOpacity>
+                    </View>
                 </View>
 
-                <View style={styles.buttonsContainer}>
-                    <TouchableOpacity onPress={toggleMenu} style={styles.menuButton}>
-                        <Icon name="bars" size={24} color="#000" />
-                    </TouchableOpacity>
-                </View>
             </View>
 
             {menuVisible && (
                 <Pressable style={styles.overlay} onPress={toggleMenu}>
                     <Animated.View style={[styles.menu, { transform: [{ translateX }] }]}>
-                        <TouchableOpacity onPress={toggleMenu} style={styles.closeButton}>
+                        <TouchableOpacity onPress={() => toggleMenu()} style={styles.closeButton}>
                             <Icon name="times" size={30} color="#FFD700" />
                         </TouchableOpacity>
                         <TouchableOpacity onPress={() => { navigation.navigate('Home'); toggleMenu(); }}>
@@ -164,12 +155,18 @@ const Header = ({ navigation, back }) => {
 
 const styles = StyleSheet.create({
     container: {
+        position: "absolute",
+        top: 0,
+        zIndex: 999,
+    },
+    containerChild: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: "space-between",
         alignItems: 'center',
         paddingHorizontal: responsiveWidth(3),
         paddingVertical: responsiveHeight(1.25),
         marginTop: responsiveHeight(1),
+        width: responsiveWidth(100)
     },
     leftHeader: {
         flexDirection: 'row',
@@ -196,20 +193,20 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         paddingVertical: responsiveHeight(2),
         elevation: 5,
-        zIndex: 1000,
-        height: screenHeight
+        height: screenHeight,
+        zIndex: 999
     },
     closeButton: {
         position: 'absolute',
         top: responsiveHeight(1),
         right: responsiveWidth(3),
         zIndex: 1001,
-        padding: responsiveWidth(1.5),
+        padding: responsiveWidth(3.5),
     },
     menuButton: {
         padding: responsiveWidth(2.3),
         backgroundColor: '#FFD700',
-        borderRadius: 6
+        borderRadius: 6,
     },
     menuItem: {
         paddingVertical: responsiveHeight(1),
@@ -224,7 +221,7 @@ const styles = StyleSheet.create({
         right: 0,
         bottom: -(screenHeight),
         backgroundColor: 'transparent',
-        zIndex: 999,
+        zIndex: 10
     },
 });
 

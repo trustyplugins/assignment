@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
         width: responsiveWidth(100),
         height: responsiveHeight(70),
         justifyContent: 'space-between',
+        paddingTop: responsiveHeight(42)
     },
     topBar: {
         flexDirection: 'row',
