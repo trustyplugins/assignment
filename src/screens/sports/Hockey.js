@@ -7,11 +7,12 @@ const Hockey = ({ navigation }) => {
 
     return (
         <ScrollView contentContainerStyle={styles.container}>
+        <Header navigation={navigation} back={navigation.canGoBack() ? {} : null} />
             <ImageBackground
                 source={require("../../../assets/hockey-bg.jpg")}
                 style={styles.backgroundImage}
             >
-                <Header navigation={navigation} back={navigation.canGoBack() ? {} : null} />
+                
 
                 {/* Text Content */}
                 <View style={styles.textContent}>

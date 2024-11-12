@@ -7,6 +7,7 @@ const Tennis = ({ navigation }) => {
 
     return (
         <ScrollView contentContainerStyle={styles.container}>
+            <Header navigation={navigation} back={navigation.canGoBack() ? {} : null} />
             <ImageBackground
                 source={require("../../../assets/tenis-bg.webp")}
                 style={styles.backgroundImage}

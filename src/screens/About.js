@@ -17,12 +17,12 @@ const About = ({ navigation }) => {
     }
     return (
         <ScrollView ref={scrollViewRef} contentContainerStyle={styles.container}>
-
+            <Header navigation={navigation} back={navigation.canGoBack() ? {} : null} />
             <ImageBackground
                 source={require("../../assets/about-bg.jpg")}
                 style={styles.backgroundImage}
             >
-                <Header navigation={navigation} back={navigation.canGoBack() ? {} : null} />
+
 
                 {/* Text Content */}
                 <View style={styles.textContent}>

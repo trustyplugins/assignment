@@ -78,7 +78,7 @@ const Header = ({ navigation, back }) => {
                 <Pressable style={styles.overlay} onPress={toggleMenu}>
                     <Animated.View style={[styles.menu, { transform: [{ translateX }] }]}>
                         <TouchableOpacity onPress={() => toggleMenu()} style={styles.closeButton}>
-                            <Icon name="times" size={30} color="#FFD700" />
+                            <Icon name="times" size={30} color="#000" />
                         </TouchableOpacity>
                         <TouchableOpacity onPress={() => { navigation.navigate('Home'); toggleMenu(); }}>
                             <Text style={styles.menuItem}>Home</Text>
@@ -202,6 +202,8 @@ const styles = StyleSheet.create({
         right: responsiveWidth(3),
         zIndex: 1001,
         padding: responsiveWidth(3.5),
+        backgroundColor: "#FFD700",
+        borderRadius:10
     },
     menuButton: {
         padding: responsiveWidth(2.3),
