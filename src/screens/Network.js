@@ -144,6 +144,11 @@ const Network = ({ navigation }) => {
     const showMore = () => {
         setLoadMore((prev) => !prev)
     }
+    const handleLearnMore = () => {
+        if (scrollViewRef.current) {
+            scrollViewRef.current.scrollTo({ y: 0, animated: true });
+        }
+    }
 
     const latestShows = [
         {
@@ -233,7 +238,7 @@ const Network = ({ navigation }) => {
                             source={{
                                 uri: videoContent.url
                             }}
-                            allowsFullscreenVideo={true}
+                            allowsFullscreenVideo={false}
                         />
                     </TouchableOpacity>
                     <View style={styles.showContent}>
@@ -309,34 +314,6 @@ const Network = ({ navigation }) => {
                     </TouchableOpacity>
                 </View>
             </ImageBackground>
-
-            {/* Our Hosts */}
-
-            <View style={{ justifyContent: "center", alignItems: "center" }}>
-                <Text style={styles.aboutTopTitle}>Our Hosts</Text>
-                <Text style={{ ...styles.aboutTitle, fontSize: responsiveFontSize(3.5) }}>Meet Our Top Talent</Text>
-                <FlatList
-                    ref={flatListRef}
-                    data={hostImg}
-                    keyExtractor={(item) => item.id}
-                    horizontal
-                    pagingEnabled
-                    showsHorizontalScrollIndicator={false}
-                    onScroll={Animated.event(
-                        [{ nativeEvent: { contentOffset: { x: scrollX } } }],
-                        { useNativeDriver: false }
-                    )}
-                    renderItem={({ item }) => (
-                        <View style={{ width: responsiveWidth(100), alignItems: 'center', justifyContent: "center" }}>
-                            <Image
-                                source={item.img}
-                                style={{ width: responsiveWidth(80), height: responsiveHeight(60), resizeMode: 'contain' }}
-                            />
-                        </View>
-                    )}
-                />
-
-            </View>
 
             <ImageBackground
                 source={require("../../assets/bg-3.jpg")}
@@ -453,7 +430,7 @@ const Network = ({ navigation }) => {
                     >
                         Gain a deeper understanding of various aspects of life, culture, and personal development from the diverse voices of women.
                     </Text>
-                    <TouchableOpacity
+                    <TouchableOpacity onPress={handleLearnMore}
                         style={{
                             paddingVertical: responsiveHeight(1),
                             paddingHorizontal: responsiveWidth(5),
@@ -518,7 +495,7 @@ const Network = ({ navigation }) => {
                     >
                         Pursue their passions and goals, feel empowered and inspired with our content created for women to women. We are POWERFULL
                     </Text>
-                    <TouchableOpacity
+                    <TouchableOpacity onPress={handleLearnMore}
                         style={{
                             paddingVertical: responsiveHeight(1),
                             paddingHorizontal: responsiveWidth(5),
@@ -583,7 +560,7 @@ const Network = ({ navigation }) => {
                     >
                         gain insights into various subjects such as career development, health and wellness, relationships,  personal growth and knowledge enhancement.
                     </Text>
-                    <TouchableOpacity
+                    <TouchableOpacity onPress={handleLearnMore}
                         style={{
                             paddingVertical: responsiveHeight(1),
                             paddingHorizontal: responsiveWidth(5),

@@ -5,12 +5,18 @@ import Header from '../components/Header';
 import Copyright from '../components/Copyright';
 import Icon from 'react-native-vector-icons/FontAwesome';
 const About = ({ navigation }) => {
+    const scrollViewRef = useRef(null);
     const handleClick = () => {
         const url = 'https://m.youtube.com/@SpanglishWorldNetwork';
         Linking.openURL(url).catch((err) => console.error('An error occurred', err));
     };
+    const handleLearnMore = () => {
+        if (scrollViewRef.current) {
+            scrollViewRef.current.scrollTo({ y: 0, animated: true });
+        }
+    }
     return (
-        <ScrollView contentContainerStyle={styles.container}>
+        <ScrollView ref={scrollViewRef}  contentContainerStyle={styles.container}>
 
             <ImageBackground
                 source={require("../../assets/about-bg.jpg")}
@@ -135,7 +141,7 @@ const About = ({ navigation }) => {
                     >
                         Immerse yourself in thought-provoking dialogues that span a spectrum of topics—from innovation and leadership to personal growth and societal change.
                     </Text>
-                    <TouchableOpacity
+                    <TouchableOpacity onPress={handleLearnMore}
                         style={{
                             paddingVertical: responsiveHeight(1),
                             paddingHorizontal: responsiveWidth(5),
@@ -200,7 +206,7 @@ const About = ({ navigation }) => {
                     >
                         Whether you're a weekend warrior or a fantasy league champion.  Gear up, get ready, and join us as we celebrate the triumphs, and analyze the strategies.
                     </Text>
-                    <TouchableOpacity
+                    <TouchableOpacity onPress={handleLearnMore}
                         style={{
                             paddingVertical: responsiveHeight(1),
                             paddingHorizontal: responsiveWidth(5),
@@ -265,7 +271,7 @@ const About = ({ navigation }) => {
                     >
                         Discover wellness practices that nourish the body, mind, and soul, as we explore mindfulness, fitness trends, and holistic approaches to living a balanced life.
                     </Text>
-                    <TouchableOpacity
+                    <TouchableOpacity onPress={handleLearnMore}
                         style={{
                             paddingVertical: responsiveHeight(1),
                             paddingHorizontal: responsiveWidth(5),

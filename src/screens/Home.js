@@ -177,7 +177,7 @@ const Home = ({ navigation }) => {
                             source={{
                                 uri: videoContent.url
                             }}
-                            allowsFullscreenVideo={true}
+                            allowsFullscreenVideo={false}
                         />
                     </TouchableOpacity>
                     <View style={styles.showContent}>
