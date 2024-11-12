@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingHorizontal: responsiveWidth(3),
         paddingVertical: responsiveHeight(1.25),
-        marginTop: responsiveHeight(1)
+        marginTop: responsiveHeight(1),
     },
     leftHeader: {
         flexDirection: 'row',
@@ -186,7 +186,7 @@ const styles = StyleSheet.create({
         top: 0,
         left: 0,
         right: 0,
-        bottom: 0,
+        bottom: -(screenHeight),
         backgroundColor: 'transparent',
         zIndex: 999,
     },
