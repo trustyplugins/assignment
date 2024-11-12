@@ -203,7 +203,7 @@ const styles = StyleSheet.create({
         zIndex: 1001,
         padding: responsiveWidth(3.5),
         backgroundColor: "#FFD700",
-        borderRadius:10
+        borderRadius: 10
     },
     menuButton: {
         padding: responsiveWidth(2.3),
