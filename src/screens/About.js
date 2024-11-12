@@ -11,6 +11,7 @@ const About = ({ navigation }) => {
     };
     return (
         <ScrollView contentContainerStyle={styles.container}>
+
             <ImageBackground
                 source={require("../../assets/about-bg.jpg")}
                 style={styles.backgroundImage}
@@ -20,10 +21,11 @@ const About = ({ navigation }) => {
                 {/* Text Content */}
                 <View style={styles.textContent}>
                     <Text style={styles.title}>About Us</Text>
-                    <Text style={styles.subtitle}>Home</Text>
+                    <TouchableOpacity onPress={() => navigation.navigate("Home")}><Text style={styles.subtitle}>Home</Text></TouchableOpacity>
                 </View>
             </ImageBackground>
             {/* Our Channels Section */}
+
             <View style={styles.channelsSection}>
                 <Text style={styles.channelsTitle}>Our Channels</Text>
                 <View style={styles.channelIcons}>
