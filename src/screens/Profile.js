@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { View, Text, ImageBackground, TouchableOpacity, Image, StyleSheet, ScrollView } from 'react-native';
 import { responsiveHeight, responsiveWidth, responsiveFontSize } from 'react-native-responsive-dimensions';
 import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Copyright from '../components/Copyright';
 import { useSelector } from "react-redux";
 const Profile = ({ navigation }) => {
     const userData = useSelector(state => state.user.user);
@@ -21,7 +21,7 @@ const Profile = ({ navigation }) => {
                     <TouchableOpacity onPress={() => navigation.navigate("Home")}><Text style={styles.subtitle}>+91- {userData?.phone}</Text></TouchableOpacity>
                 </View>
             </ImageBackground>
-            <Footer navigation={navigation} />
+            <Copyright />
         </ScrollView>
     );
 };

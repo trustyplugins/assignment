@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { View, Text, ImageBackground, TouchableOpacity, Image, StyleSheet, ScrollView, Linking, Dimensions, Animated, FlatList } from 'react-native';
 import { responsiveHeight, responsiveWidth, responsiveFontSize } from 'react-native-responsive-dimensions';
 import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Copyright from '../components/Copyright';
 import { WebView } from 'react-native-webview';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -648,7 +648,7 @@ const Network = ({ navigation }) => {
 
             </View>
 
-            <Footer navigation={navigation} />
+            <Copyright />
         </ScrollView>
     );
 };

@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { View, Text, ImageBackground, TouchableOpacity, Image, StyleSheet, ScrollView, Linking, Dimensions, Animated, FlatList } from 'react-native';
 import { responsiveHeight, responsiveWidth, responsiveFontSize } from 'react-native-responsive-dimensions';
 import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Copyright from '../components/Copyright';
 import { WebView } from 'react-native-webview';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -195,7 +195,7 @@ const Sports = ({ navigation }) => {
 
             {/* Our Channels Section */}
 
-            <View style={styles.channelsSection}>
+            {/* <View style={styles.channelsSection}>
                 <Text style={styles.channelsTitle}>Spanglish Network</Text>
                 <View style={styles.channelIcons}>
                     <Image source={require('../../assets/ch-1.png')} style={styles.channelIcon} />
@@ -203,7 +203,7 @@ const Sports = ({ navigation }) => {
                     <Image source={require('../../assets/ch-3.png')} style={styles.channelIcon} />
                 </View>
                 <View><Image source={require('../../assets/ch-4.png')} style={{ width: responsiveWidth(24), height: responsiveHeight(14), resizeMode: 'contain' }} /></View>
-            </View>
+            </View> */}
 
             {/* About Spanglish */}
 
@@ -218,7 +218,7 @@ const Sports = ({ navigation }) => {
 
             {/* Latest Shows Section */}
 
-            <View style={styles.latestShowsSection}>
+            {/* <View style={styles.latestShowsSection}>
                 <Text style={styles.sectionTitle}>Our Latest Shows</Text>
                 <TouchableOpacity style={styles.watchMoreButton} onPress={handleWatchMore}>
                     <Text style={styles.watchMoreText}>Clear Here</Text>
@@ -290,9 +290,9 @@ const Sports = ({ navigation }) => {
                     }
                 </View>
 
-            </View>
+            </View> */}
 
-            <ImageBackground
+            {/* <ImageBackground
                 source={require("../../assets/bg-2.jpg")}
                 style={styles.backgroundImage}
             >
@@ -306,11 +306,11 @@ const Sports = ({ navigation }) => {
                         <Text style={{ color: '#fff', fontWeight: 'bold', fontSize: responsiveFontSize(2), textAlign: "center" }}>Tune Fore More</Text>
                     </TouchableOpacity>
                 </View>
-            </ImageBackground>
+            </ImageBackground> */}
 
             {/* Our Hosts */}
 
-            <View style={{ justifyContent: "center", alignItems: "center" }}>
+            {/* <View style={{ justifyContent: "center", alignItems: "center" }}>
                 <Text style={styles.aboutTopTitle}>Our Hosts</Text>
                 <Text style={{ ...styles.aboutTitle, fontSize: responsiveFontSize(3.5) }}>Meet Our Top Talent</Text>
                 <FlatList
@@ -334,9 +334,9 @@ const Sports = ({ navigation }) => {
                     )}
                 />
 
-            </View>
+            </View> */}
 
-            <ImageBackground
+            {/* <ImageBackground
                 source={require("../../assets/bg-3.jpg")}
                 style={{ ...styles.backgroundImage, height: responsiveHeight(75) }}
                 blurRadius={7}
@@ -360,11 +360,11 @@ const Sports = ({ navigation }) => {
                         />
                     </View>
                 </View>
-            </ImageBackground>
+            </ImageBackground> */}
 
             {/* Why Choose Us */}
 
-            <View
+            {/* <View
                 style={{
                     paddingHorizontal: responsiveWidth(5),
                     paddingVertical: responsiveHeight(3),
@@ -405,7 +405,7 @@ const Sports = ({ navigation }) => {
                     We believe that sports are more than just games; they’re a shared experience that brings people together. Join the conversation with fellow fans in our vibrant community. Share your insights, engage in friendly debates, and revel in the camaraderie that makes being a sports fan truly special.
                 </Text>
 
-                {/* Card Section */}
+                
                 <View
                     style={{
                         width: responsiveWidth(90),
@@ -601,11 +601,11 @@ const Sports = ({ navigation }) => {
                         </Text>
                     </TouchableOpacity>
                 </View>
-            </View>
+            </View> */}
 
             {/* From Our Channel */}
 
-            <View style={styles.aboutSection}>
+            {/* <View style={styles.aboutSection}>
                 <Text style={styles.aboutTopTitle}>From Our Channel</Text>
                 <Text style={styles.aboutTitle}>Get the bold insights and new perspectives</Text>
                 <TouchableOpacity style={{
@@ -614,9 +614,9 @@ const Sports = ({ navigation }) => {
                     <Text style={{ color: '#fff', fontWeight: 'bold', fontSize: responsiveFontSize(2), textAlign: "center" }}>View More</Text>
                 </TouchableOpacity>
 
-            </View>
+            </View> */}
 
-            <Footer navigation={navigation} />
+            <Copyright />
         </ScrollView>
     );
 };

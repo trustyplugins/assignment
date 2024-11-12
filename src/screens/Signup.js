@@ -5,7 +5,7 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { responsiveHeight, responsiveWidth, responsiveFontSize } from 'react-native-responsive-dimensions';
 import { API_BASE_URL } from "@env";
-import Header from '../components/Header';
+
 const SignupSchema = Yup.object().shape({
     username: Yup.string()
         .min(3, 'Too Short!')
@@ -48,7 +48,10 @@ export default function Signup({ navigation }) {
                 source={require("../../assets/media-event.jpg")}
                 style={styles.backgroundImage}
             >
-                <Header navigation={navigation} back={navigation.canGoBack() ? {} : null} />
+                <Image
+                    source={require('../../assets/logo.png')}
+                    style={styles.logo}
+                />
 
 
                 {/* Text Content */}

@@ -10,6 +10,7 @@ const screenHeight = Dimensions.get("window").height;
 const Header = ({ navigation, back }) => {
     const dispatch = useDispatch();
     const [menuVisible, setMenuVisible] = useState(false);
+    const [sports, setSports] = useState(false);
     const translateX = useRef(new Animated.Value(-200)).current; // Initial position off-screen
     const userData = useSelector(state => state.user.user);
 
@@ -30,6 +31,7 @@ const Header = ({ navigation, back }) => {
                 useNativeDriver: true,
             }).start();
         }
+        setSports(false)
     };
 
     const handleLogout = () => {
@@ -96,9 +98,40 @@ const Header = ({ navigation, back }) => {
                         <TouchableOpacity onPress={() => { navigation.navigate('Network'); toggleMenu(); }}>
                             <Text style={styles.menuItem}>H.E.R.Network</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity onPress={() => { navigation.navigate('Sports'); toggleMenu(); }}>
-                            <Text style={styles.menuItem}>Spanglish Sports World</Text>
-                        </TouchableOpacity>
+                        <View style={{ flexDirection: "row", alignItems: 'center', justifyContent: "space-between", paddingRight: responsiveWidth(3) }}>
+                            <TouchableOpacity onPress={() => { navigation.navigate('Sports'); toggleMenu(); }}>
+                                <Text style={styles.menuItem}>Spanglish Sports World</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => { setSports(prev => !prev) }}>
+                                <Text style={{ borderWidth: 1, borderColor: "gray", padding: responsiveWidth(1.5), borderRadius: 8 }}> <Icon name="arrow-down" size={16} color="#000" /></Text>
+                            </TouchableOpacity>
+                        </View>
+                        {sports && <View style={{ backgroundColor: "#F5F5F5" }}>
+                            <TouchableOpacity onPress={() => { navigation.navigate('Baseball'); toggleMenu(); }}>
+                                <Text style={styles.menuItem}>Baseball</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => { navigation.navigate('Basketball'); toggleMenu(); }}>
+                                <Text style={styles.menuItem}>Basketball</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => { navigation.navigate('Football'); toggleMenu(); }}>
+                                <Text style={styles.menuItem}>Football</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => { navigation.navigate('Soccer'); toggleMenu(); }}>
+                                <Text style={styles.menuItem}>Soccer</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => { navigation.navigate('Hockey'); toggleMenu(); }}>
+                                <Text style={styles.menuItem}>Hockey</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => { navigation.navigate('Rugby'); toggleMenu(); }}>
+                                <Text style={styles.menuItem}>Rugby</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => { navigation.navigate('Tennis'); toggleMenu(); }}>
+                                <Text style={styles.menuItem}>Tennis</Text>
+                            </TouchableOpacity>
+                            {/* <TouchableOpacity onPress={() => { navigation.navigate('Others'); toggleMenu(); }}>
+                                <Text style={styles.menuItem}>Others</Text>
+                            </TouchableOpacity> */}
+                        </View>}
                         <TouchableOpacity onPress={() => { toggleMenu(); handSwitch(); }}>
                             <Text style={styles.menuItem}>La Portada Canadá</Text>
                         </TouchableOpacity>

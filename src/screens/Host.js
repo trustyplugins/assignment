@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { View, Text, ImageBackground, TouchableOpacity, Image, StyleSheet, ScrollView } from 'react-native';
 import { responsiveHeight, responsiveWidth, responsiveFontSize } from 'react-native-responsive-dimensions';
 import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Copyright from '../components/Copyright';
 
 const Host = ({ navigation }) => {
     const hostImg = [
@@ -90,7 +90,7 @@ const Host = ({ navigation }) => {
             }
 
 
-            <Footer navigation={navigation} />
+            <Copyright />
         </ScrollView>
     );
 };

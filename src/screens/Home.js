@@ -2,14 +2,15 @@ import React, { useEffect, useRef, useState } from 'react';
 import { View, Text, ImageBackground, TouchableOpacity, Image, StyleSheet, ScrollView, Linking, Dimensions, Animated, FlatList } from 'react-native';
 import { responsiveHeight, responsiveWidth, responsiveFontSize } from 'react-native-responsive-dimensions';
 import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Copyright from '../components/Copyright';
 import { WebView } from 'react-native-webview';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { useSelector } from "react-redux";
 
-const screenWidth = Dimensions.get('window').width;
 const Home = ({ navigation }) => {
     const [isRunning, setIsRunning] = useState(false);
     const [loadMore, setLoadMore] = useState(false);
+
     const [videoContent, setVideoContent] = useState({
         id: 1,
         img: require("../../assets/th-1.jpg"),
@@ -19,81 +20,19 @@ const Home = ({ navigation }) => {
         desc1: "Special Guest: Jaye Byard, Ray Olubowale, Richard Solomon, Ryan Rannelli & Steve Beaupre.",
         url: "https://www.youtube.com/watch?v=QN_1o1VoJZo"
     })
+
     const scaleAnim = useRef(new Animated.Value(1)).current;
     const scrollViewRef = useRef(null);
-    const flatListRef = useRef(null);
-    const scrollX = useRef(new Animated.Value(0)).current;
-
-    const hostImg = [
-        {
-            id: 1,
-            img: require('../../assets/host-1.png')
-        },
-        {
-            id: 2,
-            img: require('../../assets/host-2.png')
-        },
-        {
-            id: 3,
-            img: require('../../assets/host-3.png')
-        },
-        {
-            id: 4,
-            img: require('../../assets/host-4.png')
-        },
-        {
-            id: 5,
-            img: require('../../assets/host-5.png')
-        },
-        {
-            id: 6,
-            img: require('../../assets/host-6.png')
-        },
-        {
-            id: 7,
-            img: require('../../assets/host-7.png')
-        },
-        {
-            id: 8,
-            img: require('../../assets/host-8.png')
-        },
-        {
-            id: 9,
-            img: require('../../assets/host-9.png')
-        },
-        {
-            id: 10,
-            img: require('../../assets/host-10.jpg')
-        },
-        {
-            id: 11,
-            img: require('../../assets/host-11.png')
-        },
-        {
-            id: 12,
-            img: require('../../assets/host-12.png')
-        },
-        {
-            id: 13,
-            img: require('../../assets/host-13.png')
-        },
-        {
-            id: 14,
-            img: require('../../assets/host-14.png')
-        },
-    ]
-
+    const userData = useSelector(state => state.user.user);
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            flatListRef.current?.scrollToOffset({
-                offset: (scrollX._value + screenWidth) % (hostImg.length * screenWidth),
-                animated: true,
+        if (!userData) {
+            navigation.reset({
+                index: 0,
+                routes: [{ name: 'Login' }],
             });
-        }, 1500); // Slide every 3 seconds
-
-        return () => clearInterval(interval);
-    }, [scrollX]);
+        }
+    }, [])
 
     useEffect(() => {
         if (isRunning) {
@@ -124,6 +63,7 @@ const Home = ({ navigation }) => {
             startPulseAnimation();
         }, 1000)
     };
+
     const startPulseAnimation = () => {
         Animated.loop(
             Animated.sequence([
@@ -175,7 +115,11 @@ const Home = ({ navigation }) => {
 
     ]
 
-
+    const handleLearnMore = () => {
+        if (scrollViewRef.current) {
+            scrollViewRef.current.scrollTo({ y: 0, animated: true });
+        }
+    }
 
     return (
         <ScrollView ref={scrollViewRef} contentContainerStyle={styles.container}>
@@ -310,34 +254,6 @@ const Home = ({ navigation }) => {
                 </View>
             </ImageBackground>
 
-            {/* Our Hosts */}
-
-            <View style={{ justifyContent: "center", alignItems: "center" }}>
-                <Text style={styles.aboutTopTitle}>Our Hosts</Text>
-                <Text style={{ ...styles.aboutTitle, fontSize: responsiveFontSize(3.5) }}>Meet Our Top Talent</Text>
-                <FlatList
-                    ref={flatListRef}
-                    data={hostImg}
-                    keyExtractor={(item) => item.id}
-                    horizontal
-                    pagingEnabled
-                    showsHorizontalScrollIndicator={false}
-                    onScroll={Animated.event(
-                        [{ nativeEvent: { contentOffset: { x: scrollX } } }],
-                        { useNativeDriver: false }
-                    )}
-                    renderItem={({ item }) => (
-                        <View style={{ width: responsiveWidth(100), alignItems: 'center', justifyContent: "center" }}>
-                            <Image
-                                source={item.img}
-                                style={{ width: responsiveWidth(80), height: responsiveHeight(60), resizeMode: 'contain' }}
-                            />
-                        </View>
-                    )}
-                />
-
-            </View>
-
             <ImageBackground
                 source={require("../../assets/bg-3.jpg")}
                 style={{ ...styles.backgroundImage, height: responsiveHeight(75) }}
@@ -453,7 +369,7 @@ const Home = ({ navigation }) => {
                     >
                         Immerse yourself in thought-provoking dialogues that span a spectrum of topics—from innovation and leadership to personal growth and societal change.
                     </Text>
-                    <TouchableOpacity
+                    <TouchableOpacity onPress={handleLearnMore}
                         style={{
                             paddingVertical: responsiveHeight(1),
                             paddingHorizontal: responsiveWidth(5),
@@ -518,7 +434,7 @@ const Home = ({ navigation }) => {
                     >
                         Whether you're a weekend warrior or a fantasy league champion.  Gear up, get ready, and join us as we celebrate the triumphs, and analyze the strategies.
                     </Text>
-                    <TouchableOpacity
+                    <TouchableOpacity onPress={handleLearnMore}
                         style={{
                             paddingVertical: responsiveHeight(1),
                             paddingHorizontal: responsiveWidth(5),
@@ -583,7 +499,7 @@ const Home = ({ navigation }) => {
                     >
                         Discover wellness practices that nourish the body, mind, and soul, as we explore mindfulness, fitness trends, and holistic approaches to living a balanced life.
                     </Text>
-                    <TouchableOpacity
+                    <TouchableOpacity onPress={handleLearnMore}
                         style={{
                             paddingVertical: responsiveHeight(1),
                             paddingHorizontal: responsiveWidth(5),
@@ -648,7 +564,7 @@ const Home = ({ navigation }) => {
 
             </View>
 
-            <Footer navigation={navigation} />
+            <Copyright />
         </ScrollView>
     );
 };

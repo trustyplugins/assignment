@@ -10,6 +10,13 @@ import Profile from '../screens/Profile';
 import Network from '../screens/Network';
 import Contact from '../screens/Contact';
 import Sports from '../screens/Sports';
+import Baseball from '../screens/sports/Baseball';
+import Basketball from '../screens/sports/Basketball';
+import Football from '../screens/sports/Football';
+import Hockey from '../screens/sports/Hockey';
+import Rugby from '../screens/sports/Rugby';
+import Soccer from '../screens/sports/Soccer';
+import Tennis from '../screens/sports/Tennis';
 import { PaperProvider, DefaultTheme } from 'react-native-paper';
 const Stack = createNativeStackNavigator();
 const customTheme = {
@@ -47,6 +54,41 @@ const AppNavigator = () => {
                     <Stack.Screen
                         name="Sports"
                         component={Sports}
+                        options={{ headerShown: false }}
+                    />
+                    <Stack.Screen
+                        name="Baseball"
+                        component={Baseball}
+                        options={{ headerShown: false }}
+                    />
+                    <Stack.Screen
+                        name="Basketball"
+                        component={Basketball}
+                        options={{ headerShown: false }}
+                    />
+                    <Stack.Screen
+                        name="Football"
+                        component={Football}
+                        options={{ headerShown: false }}
+                    />
+                    <Stack.Screen
+                        name="Hockey"
+                        component={Hockey}
+                        options={{ headerShown: false }}
+                    />
+                    <Stack.Screen
+                        name="Rugby"
+                        component={Rugby}
+                        options={{ headerShown: false }}
+                    />
+                    <Stack.Screen
+                        name="Soccer"
+                        component={Soccer}
+                        options={{ headerShown: false }}
+                    />
+                    <Stack.Screen
+                        name="Tennis"
+                        component={Tennis}
                         options={{ headerShown: false }}
                     />
                     <Stack.Screen

@@ -44,7 +44,11 @@ export default function Login({ navigation }) {
         source={require("../../assets/media-event.jpg")}
         style={styles.backgroundImage}
       >
-        <Header navigation={navigation} back={navigation.canGoBack() ? {} : null} />
+        {/* <Header navigation={navigation} back={navigation.canGoBack() ? {} : null} /> */}
+        <Image
+          source={require('../../assets/logo.png')}
+          style={styles.logo}
+        />
 
         {/* Text Content */}
         <View style={styles.textContent}>

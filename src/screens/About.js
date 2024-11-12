@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { View, Text, ImageBackground, TouchableOpacity, Image, StyleSheet, ScrollView, Linking } from 'react-native';
 import { responsiveHeight, responsiveWidth, responsiveFontSize } from 'react-native-responsive-dimensions';
 import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Copyright from '../components/Copyright';
 import Icon from 'react-native-vector-icons/FontAwesome';
 const About = ({ navigation }) => {
     const handleClick = () => {
@@ -302,8 +302,8 @@ const About = ({ navigation }) => {
                     </TouchableOpacity>
                 </View>
             </ImageBackground>
+            <Copyright />
 
-            <Footer navigation={navigation} />
         </ScrollView>
     );
 };
