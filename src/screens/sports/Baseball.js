@@ -7,12 +7,12 @@ const Baseball = ({ navigation }) => {
 
     return (
         <ScrollView contentContainerStyle={styles.container}>
-        <Header navigation={navigation} back={navigation.canGoBack() ? {} : null} />
+            <Header navigation={navigation} back={navigation.canGoBack() ? {} : null} />
             <ImageBackground
                 source={require("../../../assets/baseball-bg.jpg")}
                 style={styles.backgroundImage}
             >
-                
+
 
                 {/* Text Content */}
                 <View style={styles.textContent}>
