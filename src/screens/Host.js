@@ -34,34 +34,34 @@ const Host = ({ navigation }) => {
             id: 7,
             img: require('../../assets/host-7.png')
         },
-        {
-            id: 8,
-            img: require('../../assets/host-8.png')
-        },
-        {
-            id: 9,
-            img: require('../../assets/host-9.png')
-        },
-        {
-            id: 10,
-            img: require('../../assets/host-10.jpg')
-        },
-        {
-            id: 11,
-            img: require('../../assets/host-11.png')
-        },
-        {
-            id: 12,
-            img: require('../../assets/host-12.png')
-        },
-        {
-            id: 13,
-            img: require('../../assets/host-13.png')
-        },
-        {
-            id: 14,
-            img: require('../../assets/host-14.png')
-        },
+        // {
+        //     id: 8,
+        //     img: require('../../assets/host-8.png')
+        // },
+        // {
+        //     id: 9,
+        //     img: require('../../assets/host-9.png')
+        // },
+        // {
+        //     id: 10,
+        //     img: require('../../assets/host-10.jpg')
+        // },
+        // {
+        //     id: 11,
+        //     img: require('../../assets/host-11.png')
+        // },
+        // {
+        //     id: 12,
+        //     img: require('../../assets/host-12.png')
+        // },
+        // {
+        //     id: 13,
+        //     img: require('../../assets/host-13.png')
+        // },
+        // {
+        //     id: 14,
+        //     img: require('../../assets/host-14.png')
+        // },
     ]
 
     return (
