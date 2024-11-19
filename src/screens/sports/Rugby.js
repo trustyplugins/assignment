@@ -1,9 +1,13 @@
 import React from 'react';
-import { View, Text, ImageBackground, TouchableOpacity, Image, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, ImageBackground, TouchableOpacity, Image, StyleSheet, ScrollView,Linking } from 'react-native';
 import { responsiveHeight, responsiveWidth, responsiveFontSize } from 'react-native-responsive-dimensions';
 import Header from '../../components/Header';
 import Copyright from '../../components/Copyright';
 const Rugby = ({ navigation }) => {
+    const handleClick = () => {
+        const url = 'https://m.youtube.com/@SpanglishWorldNetwork';
+        Linking.openURL(url).catch((err) => console.error('An error occurred', err));
+    };
 
     return (
         <ScrollView contentContainerStyle={styles.container}>
@@ -11,6 +15,7 @@ const Rugby = ({ navigation }) => {
             <ImageBackground
                 source={require("../../../assets/rug-bg.webp")}
                 style={styles.backgroundImage}
+                blurRadius={10}
             >
                 
 
@@ -76,6 +81,25 @@ const Rugby = ({ navigation }) => {
                     >
                         Rugby fans around the world marked a significant day as World Rugby celebrated the legends who have shaped the game. Teams and fans honored the extraordinary contributions of iconic players, reinforcing rugby’s spirit of respect, unity, and passion.
                     </Text>
+                    <TouchableOpacity onPress={handleClick}
+                        style={{
+                            paddingVertical: responsiveHeight(1),
+                            paddingHorizontal: responsiveWidth(8),
+                            backgroundColor: '#FFD700', // yellow button background
+                            borderRadius: 20,
+                        }}
+                    >
+                        <Text
+                            style={{
+                                color: '#fff',
+                                fontWeight: 'bold',
+                                fontSize: responsiveFontSize(1.8),
+                                textAlign: 'center',
+                            }}
+                        >
+                            Youtube
+                        </Text>
+                    </TouchableOpacity>
                 </View>
             </View>
 

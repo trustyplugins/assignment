@@ -160,37 +160,36 @@ const Network = ({ navigation }) => {
             desc1: "This show is set out on an expedition to allow you a discovery to your BEST SELF! My intention is to bring forth many different topics related to better living, creating authentic relationships as we take a journey to unleash the best of who we are, tap into a new potential and build habits that will allow us to prioritize what truly matters. The intention of “Lead with Purpose” is to support you in your journey of life and you cultivate the life you were meant to LIVE! My hope is this show will embark you on a transformative path to be in gratitude, accept the unfolding of life and to commit to your values and dreams.",
             url: "https://www.youtube.com/watch?v=VIsqWHvfwGU"
         },
-        {
-            id: 2,
-            img: require("../../assets/net-shows-2.jpg"),
-            title: "Elevate Your Life with Dr. Michelle Odette Green 261024",
-            subtitle: 'Elevate Your Life with Dr. Michelle Odette Green',
-            desc: "Welcome to 'Elevate Your Life,' this show is dedicated to empowering you to reach new heights of success and fulfillment.",
-            desc1: "Join us as we dive into the principles, strategies, and inspiring stories that will elevate your thoughts, expand your mindset, and ignite positive change in every area of your life. Get ready to embark on a journey of self-discovery, growth, and ultimate transformation. This is your time to rise and shine!",
-            url: "https://www.youtube.com/watch?v=14zEZj231SU&t=137s"
-        },
-        {
-            id: 3,
-            img: require("../../assets/net-shows-3.jpg"),
-            title: "Create Your Victorious Life with Cindy Gould 251024",
-            subtitle: 'Create Your Victorious Life with Cindy Gould',
-            desc: "These incredible people are each from different walks of life who will share their personal stories of resilience, perseverance, and triumph.",
-            desc1: "Their experiences will not only entertain and educate you, they will also ignite a fire under you to pursue the vision that God has placed in your heart with everything you've got!",
-            url: "https://www.youtube.com/watch?v=bxECddj4RL8&t=75s"
-        },
+        // {
+        //     id: 2,
+        //     img: require("../../assets/net-shows-2.jpg"),
+        //     title: "Elevate Your Life with Dr. Michelle Odette Green 261024",
+        //     subtitle: 'Elevate Your Life with Dr. Michelle Odette Green',
+        //     desc: "Welcome to 'Elevate Your Life,' this show is dedicated to empowering you to reach new heights of success and fulfillment.",
+        //     desc1: "Join us as we dive into the principles, strategies, and inspiring stories that will elevate your thoughts, expand your mindset, and ignite positive change in every area of your life. Get ready to embark on a journey of self-discovery, growth, and ultimate transformation. This is your time to rise and shine!",
+        //     url: "https://www.youtube.com/watch?v=14zEZj231SU&t=137s"
+        // },
+        // {
+        //     id: 3,
+        //     img: require("../../assets/net-shows-3.jpg"),
+        //     title: "Create Your Victorious Life with Cindy Gould 251024",
+        //     subtitle: 'Create Your Victorious Life with Cindy Gould',
+        //     desc: "These incredible people are each from different walks of life who will share their personal stories of resilience, perseverance, and triumph.",
+        //     desc1: "Their experiences will not only entertain and educate you, they will also ignite a fire under you to pursue the vision that God has placed in your heart with everything you've got!",
+        //     url: "https://www.youtube.com/watch?v=bxECddj4RL8&t=75s"
+        // },
     ]
 
 
 
     return (
         <ScrollView ref={scrollViewRef} contentContainerStyle={styles.container}>
-           <Header navigation={navigation} back={navigation.canGoBack() ? {} : null} />
+            <Header navigation={navigation} back={navigation.canGoBack() ? {} : null} />
             <ImageBackground
                 source={require("../../assets/net-bg.jpg")}
                 style={styles.backgroundImage}
+                blurRadius={12}
             >
-             
-
                 {/* Text Content */}
                 <View style={styles.textContent}>
                     <Text style={styles.topTitle}>The Best Content For YOU!</Text>
@@ -257,7 +256,7 @@ const Network = ({ navigation }) => {
                     </View>
                 </View>
 
-                <View
+                {/* <View
                     style={{ alignItems: 'center', justifyContent: 'center', flex: 1, marginBottom: responsiveHeight(3) }}
                 >
                     {
@@ -297,13 +296,14 @@ const Network = ({ navigation }) => {
                             </View>
                         ))
                     }
-                </View>
+                </View> */}
 
             </View>
 
             <ImageBackground
                 source={require("../../assets/bg-2.jpg")}
-                style={styles.backgroundImage}
+                style={{ ...styles.backgroundImage, height: responsiveHeight(60) }}
+                blurRadius={10}
             >
                 <View style={{ paddingVertical: responsiveHeight(7), paddingHorizontal: responsiveWidth(7) }}>
                     <Text style={{ fontSize: responsiveFontSize(2.2), color: "#ffb700", borderWidth: 1, borderColor: "gray", width: responsiveWidth(45), paddingHorizontal: 11, borderRadius: 20, justifyContent: "center", paddingVertical: 5 }}>Enjoy Our shows </Text>
@@ -317,7 +317,7 @@ const Network = ({ navigation }) => {
                 </View>
             </ImageBackground>
 
-            <ImageBackground
+            {/* <ImageBackground
                 source={require("../../assets/bg-3.jpg")}
                 style={{ ...styles.backgroundImage, height: responsiveHeight(75) }}
                 blurRadius={7}
@@ -341,11 +341,11 @@ const Network = ({ navigation }) => {
                         />
                     </View>
                 </View>
-            </ImageBackground>
+            </ImageBackground> */}
 
             {/* Why Choose Us */}
 
-            <View
+            {/* <View
                 style={{
                     paddingHorizontal: responsiveWidth(5),
                     paddingVertical: responsiveHeight(3),
@@ -386,7 +386,7 @@ const Network = ({ navigation }) => {
                     H.E.R Network provides a space for diverse voices, empowers and represents women, builds a supportive community, offers educational content, and contributes to breaking stereotypes and challenging norms.
                 </Text>
 
-                {/* Card Section */}
+            
                 <View
                     style={{
                         width: responsiveWidth(90),
@@ -582,11 +582,11 @@ const Network = ({ navigation }) => {
                         </Text>
                     </TouchableOpacity>
                 </View>
-            </View>
+            </View> */}
 
             {/* testimonials */}
 
-            <ImageBackground
+            {/* <ImageBackground
                 source={require("../../assets/bg-4.jpg")}
                 style={{ ...styles.backgroundImage, height: responsiveHeight(70) }}
                 blurRadius={7}
@@ -612,7 +612,7 @@ const Network = ({ navigation }) => {
                         </View>
                     </View>
                 </View>
-            </ImageBackground>
+            </ImageBackground> */}
 
             {/* From Our Channel */}
 

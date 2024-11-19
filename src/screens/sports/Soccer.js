@@ -1,9 +1,13 @@
 import React from 'react';
-import { View, Text, ImageBackground, TouchableOpacity, Image, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, ImageBackground, TouchableOpacity, Image, StyleSheet, ScrollView,Linking } from 'react-native';
 import { responsiveHeight, responsiveWidth, responsiveFontSize } from 'react-native-responsive-dimensions';
 import Header from '../../components/Header';
 import Copyright from '../../components/Copyright';
 const Soccer = ({ navigation }) => {
+    const handleClick = () => {
+        const url = 'https://m.youtube.com/@SpanglishWorldNetwork';
+        Linking.openURL(url).catch((err) => console.error('An error occurred', err));
+    };
 
     return (
         <ScrollView contentContainerStyle={styles.container}>
@@ -11,6 +15,7 @@ const Soccer = ({ navigation }) => {
             <ImageBackground
                 source={require("../../../assets/foot-bg.jpg")}
                 style={styles.backgroundImage}
+                blurRadius={10}
             >
                 
 
@@ -76,6 +81,25 @@ const Soccer = ({ navigation }) => {
                     >
                         Manchester United held a special event to honor Sir Alex Ferguson, the legendary manager who led the club to unprecedented success. Fans and former players gathered at Old Trafford as the team unveiled a commemorative statue, celebrating Ferguson’s 26-year legacy of excellence, passion, and dedication to the game.
                     </Text>
+                    <TouchableOpacity onPress={handleClick}
+                        style={{
+                            paddingVertical: responsiveHeight(1),
+                            paddingHorizontal: responsiveWidth(8),
+                            backgroundColor: '#FFD700', // yellow button background
+                            borderRadius: 20,
+                        }}
+                    >
+                        <Text
+                            style={{
+                                color: '#fff',
+                                fontWeight: 'bold',
+                                fontSize: responsiveFontSize(1.8),
+                                textAlign: 'center',
+                            }}
+                        >
+                            Youtube
+                        </Text>
+                    </TouchableOpacity>
                 </View>
             </View>
 

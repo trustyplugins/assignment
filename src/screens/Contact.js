@@ -41,8 +41,8 @@ const Contact = ({ navigation }) => {
             <ImageBackground
                 source={require("../../assets/contact.jpg")}
                 style={styles.backgroundImage}
+                blurRadius={10}
             >
-
 
                 {/* Text Content */}
                 <View style={styles.textContent}>

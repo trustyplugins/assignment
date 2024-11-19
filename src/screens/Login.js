@@ -16,6 +16,7 @@ export default function Login({ navigation }) {
   const [apiError, setApiError] = useState(null);
   const dispatch = useDispatch();
   const handleLogin = async (values) => {
+    console.log(values, API_BASE_URL)
     try {
       const response = await axios.post(`${API_BASE_URL}/login`, values, {
         headers: {
@@ -23,7 +24,10 @@ export default function Login({ navigation }) {
         },
       })
       dispatch({ type: "LOGIN", payload: response.data.data });
-      navigation.navigate("Home")
+      navigation.reset({
+        index: 0,
+        routes: [{ name: 'Home' }],
+      });
 
     } catch (error) {
       if (error.response && error.response.data) {

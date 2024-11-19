@@ -39,7 +39,7 @@ const Header = ({ navigation, back }) => {
         dispatch({ type: "LOGIN", payload: null });
         navigation.reset({
             index: 0,
-            routes: [{ name: 'Login' }],
+            routes: [{ name: 'Landing' }],
         });
     }
 

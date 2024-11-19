@@ -9,12 +9,13 @@ const Profile = ({ navigation }) => {
 
     return (
         <ScrollView contentContainerStyle={styles.container}>
-        <Header navigation={navigation} back={navigation.canGoBack() ? {} : null} />
+            <Header navigation={navigation} back={navigation.canGoBack() ? {} : null} />
             <ImageBackground
-                source={require("../../assets/host-bg.jpg")}
+                source={require("../../assets/about-bg.jpg")}
                 style={styles.backgroundImage}
+                blurRadius={9}
             >
-                
+
 
                 {/* Text Content */}
                 <View style={styles.textContent}>
@@ -22,6 +23,19 @@ const Profile = ({ navigation }) => {
                     <TouchableOpacity onPress={() => navigation.navigate("Home")}><Text style={styles.subtitle}>+91- {userData?.phone}</Text></TouchableOpacity>
                 </View>
             </ImageBackground>
+
+            {/* Our Channels Section */}
+
+            <View style={styles.channelsSection}>
+                <Text style={styles.channelsTitle}>Our Channels</Text>
+                <View style={styles.channelIcons}>
+                    <Image source={require('../../assets/ch-1.png')} style={styles.channelIcon} />
+                    <Image source={require('../../assets/ch-2.png')} style={styles.channelIcon} />
+                    <Image source={require('../../assets/ch-3.png')} style={styles.channelIcon} />
+                </View>
+                <View><Image source={require('../../assets/ch-4.png')} style={{ width: responsiveWidth(24), height: responsiveHeight(14), resizeMode: 'contain' }} /></View>
+            </View>
+
             <Copyright />
         </ScrollView>
     );
@@ -61,13 +75,13 @@ const styles = StyleSheet.create({
         paddingHorizontal: responsiveWidth(8)
     },
     title: {
-        fontSize: responsiveFontSize(3),
+        fontSize: responsiveFontSize(6),
         fontWeight: 'bold',
         color: '#fff',
         paddingBottom: responsiveHeight(3)
     },
     subtitle: {
-        fontSize: responsiveFontSize(2),
+        fontSize: responsiveFontSize(4),
         color: '#fff',
         marginVertical: responsiveHeight(1),
         paddingBottom: responsiveHeight(3)

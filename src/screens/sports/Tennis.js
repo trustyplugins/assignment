@@ -1,9 +1,13 @@
 import React from 'react';
-import { View, Text, ImageBackground, TouchableOpacity, Image, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, ImageBackground, TouchableOpacity, Image, StyleSheet, ScrollView ,Linking} from 'react-native';
 import { responsiveHeight, responsiveWidth, responsiveFontSize } from 'react-native-responsive-dimensions';
 import Header from '../../components/Header';
 import Copyright from '../../components/Copyright';
 const Tennis = ({ navigation }) => {
+    const handleClick = () => {
+        const url = 'https://m.youtube.com/@SpanglishWorldNetwork';
+        Linking.openURL(url).catch((err) => console.error('An error occurred', err));
+    };
 
     return (
         <ScrollView contentContainerStyle={styles.container}>
@@ -11,6 +15,7 @@ const Tennis = ({ navigation }) => {
             <ImageBackground
                 source={require("../../../assets/tenis-bg.webp")}
                 style={styles.backgroundImage}
+                blurRadius={10}
             >
                 <Header navigation={navigation} back={navigation.canGoBack() ? {} : null} />
 
@@ -76,6 +81,25 @@ const Tennis = ({ navigation }) => {
                     >
                         Tennis fans worldwide celebrate Roger Federer's unparalleled career, marking an era of elegance and sportsmanship. The 20-time Grand Slam champion has left an indelible mark on the sport, inspiring generations of players and fans alike.
                     </Text>
+                    <TouchableOpacity onPress={handleClick}
+                        style={{
+                            paddingVertical: responsiveHeight(1),
+                            paddingHorizontal: responsiveWidth(8),
+                            backgroundColor: '#FFD700', // yellow button background
+                            borderRadius: 20,
+                        }}
+                    >
+                        <Text
+                            style={{
+                                color: '#fff',
+                                fontWeight: 'bold',
+                                fontSize: responsiveFontSize(1.8),
+                                textAlign: 'center',
+                            }}
+                        >
+                            Youtube
+                        </Text>
+                    </TouchableOpacity>
                 </View>
             </View>
 

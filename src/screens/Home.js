@@ -5,7 +5,6 @@ import Header from '../components/Header';
 import Copyright from '../components/Copyright';
 import { WebView } from 'react-native-webview';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { useSelector } from "react-redux";
 
 const Home = ({ navigation }) => {
     const [isRunning, setIsRunning] = useState(false);
@@ -23,16 +22,6 @@ const Home = ({ navigation }) => {
 
     const scaleAnim = useRef(new Animated.Value(1)).current;
     const scrollViewRef = useRef(null);
-    const userData = useSelector(state => state.user.user);
-
-    useEffect(() => {
-        if (!userData) {
-            navigation.reset({
-                index: 0,
-                routes: [{ name: 'Login' }],
-            });
-        }
-    }, [])
 
     useEffect(() => {
         if (isRunning) {
@@ -94,24 +83,24 @@ const Home = ({ navigation }) => {
             desc1: "Special Guest: Jaye Byard, Ray Olubowale, Richard Solomon, Ryan Rannelli & Steve Beaupre.",
             url: "https://www.youtube.com/watch?v=QN_1o1VoJZo"
         },
-        {
-            id: 2,
-            img: require("../../assets/th-2.jpg"),
-            title: "Candid Frank Live Leaf Talk with Candid Frank Stanisci and Aaron Freeland 11124",
-            subtitle: 'Candid Frank Live Leaf Talk with Candid Frank Stanisci and Aaron Freeland',
-            desc: "Candid Frank Stanisci and Aaron Freeland take a look at the latest news about the Toronto Maple Leafs making waves around the NHL.",
-            desc1: "#CandidFrankLive, Frank Stanisci, Aaron Freeland, Spanglish World Networks, Spanglish Sports World, H.E.R. Network, La Ronda del Dia, #LaPortadaCanada, Zingo TV, City of Toronto, National Hockey League (NHL), Toronto Maple Leafs, #AnaheimDucks, #ArizonaCoyotes, #BostonBruins, #BuffaloSabres, #CalgaryFlames, #CarolinaHurricanes, #ChicagoBlackhawks, #ColoradoAvalanche, #ColumbusBlueJackets, #DallasStars, #DetroitRedWings, #EdmontonOilers, #FloridaPanthers, #LosAngelesKings, #MinnesotaWild, #MontrealCanadiens, #NashvillePredators, #NewJerseyDevils, #NewYorkIslanders, #NewYorkRangers, #OttawaSenators, #PhiladelphiaFlyers, #PittsburghPenguins, #SanJoseSharks, #SeattleKraken, #StLouisBlues, #TampaBayLightning, #VancouverCanucks, #VegasGoldenKnights, #WashingtonCapitals, #WinnipegJets, American Hockey League, Toronto Marlies Hockey Club, Ontario Hockey League, MLSE (Maple Leaf Sports & Entertainment Partnership), Sportsnet, TSN - The Sports Network - Canada, CBC, CBC/Radio-Canada, CBC Sports, ESPN, ESPN+, Barley Sport, CBS, CBS News and Stations, CBS Sports, NHL Network, Madison Square Garden Sports Corp., CityTV Toronto, CTV News",
-            url: "https://www.youtube.com/watch?v=-PZn-uYgB1s"
-        },
-        {
-            id: 3,
-            img: require("../../assets/th-3.jpg"),
-            title: "Candid Frank Live CFL Talk with Frank Stanisci and David Morassutti 281024",
-            subtitle: 'Candid Frank Live CFL Talk with Frank Stanisci and David Morassutti',
-            desc: "Candid Frank Stanisci and David Morassutti take a deep dive into the headlines in the CFL",
-            desc1: "#candidfranklivecfltalk, #candidfrankliveshows, Frank Stanisci, DavidMorassutti, Canadian Football League, Canadian Football League Players' Association (CFLPA), Toronto Argonauts Football Club Inc., Hamilton Tiger-Cats Football Club, Calgary Stampeder Football Club, Alouettes de Montréal, Saskatchewan Roughrider Football Club Inc., BC Lions Football Club, Edmonton Elks, Spanglish World Networks, Spanglish Sports World, La Ronda del Dia, H.E.R. Network, Zingo TV, #LaPortadaCanada, Sportsnet, CBC Sports, TSN - The Sports Network - Canada, Corus Entertainment, Bell Media, Bell Media, Inc., Bell, Rogers Communications, CityTV Toronto, Disney Sports/ESPN Wide World of Sports, ESPN, CBS, NBCUniversal, USA Networks, Olympic Broadcasting Services, NBC Sports, CNN, CNN en Español, BBC, BBC News, FOX Sports, Grupo Televisa, Cisneros, Cisneros Media",
-            url: "https://www.youtube.com/watch?v=b6H47kAIBAc"
-        },
+        // {
+        //     id: 2,
+        //     img: require("../../assets/th-2.jpg"),
+        //     title: "Candid Frank Live Leaf Talk with Candid Frank Stanisci and Aaron Freeland 11124",
+        //     subtitle: 'Candid Frank Live Leaf Talk with Candid Frank Stanisci and Aaron Freeland',
+        //     desc: "Candid Frank Stanisci and Aaron Freeland take a look at the latest news about the Toronto Maple Leafs making waves around the NHL.",
+        //     desc1: "#CandidFrankLive, Frank Stanisci, Aaron Freeland, Spanglish World Networks, Spanglish Sports World, H.E.R. Network, La Ronda del Dia, #LaPortadaCanada, Zingo TV, City of Toronto, National Hockey League (NHL), Toronto Maple Leafs, #AnaheimDucks, #ArizonaCoyotes, #BostonBruins, #BuffaloSabres, #CalgaryFlames, #CarolinaHurricanes, #ChicagoBlackhawks, #ColoradoAvalanche, #ColumbusBlueJackets, #DallasStars, #DetroitRedWings, #EdmontonOilers, #FloridaPanthers, #LosAngelesKings, #MinnesotaWild, #MontrealCanadiens, #NashvillePredators, #NewJerseyDevils, #NewYorkIslanders, #NewYorkRangers, #OttawaSenators, #PhiladelphiaFlyers, #PittsburghPenguins, #SanJoseSharks, #SeattleKraken, #StLouisBlues, #TampaBayLightning, #VancouverCanucks, #VegasGoldenKnights, #WashingtonCapitals, #WinnipegJets, American Hockey League, Toronto Marlies Hockey Club, Ontario Hockey League, MLSE (Maple Leaf Sports & Entertainment Partnership), Sportsnet, TSN - The Sports Network - Canada, CBC, CBC/Radio-Canada, CBC Sports, ESPN, ESPN+, Barley Sport, CBS, CBS News and Stations, CBS Sports, NHL Network, Madison Square Garden Sports Corp., CityTV Toronto, CTV News",
+        //     url: "https://www.youtube.com/watch?v=-PZn-uYgB1s"
+        // },
+        // {
+        //     id: 3,
+        //     img: require("../../assets/th-3.jpg"),
+        //     title: "Candid Frank Live CFL Talk with Frank Stanisci and David Morassutti 281024",
+        //     subtitle: 'Candid Frank Live CFL Talk with Frank Stanisci and David Morassutti',
+        //     desc: "Candid Frank Stanisci and David Morassutti take a deep dive into the headlines in the CFL",
+        //     desc1: "#candidfranklivecfltalk, #candidfrankliveshows, Frank Stanisci, DavidMorassutti, Canadian Football League, Canadian Football League Players' Association (CFLPA), Toronto Argonauts Football Club Inc., Hamilton Tiger-Cats Football Club, Calgary Stampeder Football Club, Alouettes de Montréal, Saskatchewan Roughrider Football Club Inc., BC Lions Football Club, Edmonton Elks, Spanglish World Networks, Spanglish Sports World, La Ronda del Dia, H.E.R. Network, Zingo TV, #LaPortadaCanada, Sportsnet, CBC Sports, TSN - The Sports Network - Canada, Corus Entertainment, Bell Media, Bell Media, Inc., Bell, Rogers Communications, CityTV Toronto, Disney Sports/ESPN Wide World of Sports, ESPN, CBS, NBCUniversal, USA Networks, Olympic Broadcasting Services, NBC Sports, CNN, CNN en Español, BBC, BBC News, FOX Sports, Grupo Televisa, Cisneros, Cisneros Media",
+        //     url: "https://www.youtube.com/watch?v=b6H47kAIBAc"
+        // },
 
     ]
 
@@ -127,6 +116,7 @@ const Home = ({ navigation }) => {
             <ImageBackground
                 source={require("../../assets/media-event.jpg")}
                 style={styles.backgroundImage}
+                blurRadius={8}
             >
 
 
@@ -196,7 +186,7 @@ const Home = ({ navigation }) => {
                     </View>
                 </View>
 
-                <View
+                {/* <View
                     style={{ alignItems: 'center', justifyContent: 'center', flex: 1, marginBottom: responsiveHeight(3) }}
                 >
                     {
@@ -236,7 +226,7 @@ const Home = ({ navigation }) => {
                             </View>
                         ))
                     }
-                </View>
+                </View> */}
 
             </View>
 
@@ -256,7 +246,7 @@ const Home = ({ navigation }) => {
                 </View>
             </ImageBackground>
 
-            <ImageBackground
+            {/* <ImageBackground
                 source={require("../../assets/bg-3.jpg")}
                 style={{ ...styles.backgroundImage, height: responsiveHeight(75) }}
                 blurRadius={7}
@@ -280,7 +270,7 @@ const Home = ({ navigation }) => {
                         />
                     </View>
                 </View>
-            </ImageBackground>
+            </ImageBackground> */}
 
             {/* Why Choose Us */}
 
@@ -525,7 +515,7 @@ const Home = ({ navigation }) => {
 
             {/* testimonials */}
 
-            <ImageBackground
+            {/* <ImageBackground
                 source={require("../../assets/bg-4.jpg")}
                 style={{ ...styles.backgroundImage, height: responsiveHeight(70) }}
                 blurRadius={7}
@@ -551,11 +541,11 @@ const Home = ({ navigation }) => {
                         </View>
                     </View>
                 </View>
-            </ImageBackground>
+            </ImageBackground> */}
 
             {/* From Our Channel */}
 
-            <View style={styles.aboutSection}>
+            {/* <View style={styles.aboutSection}>
                 <Text style={styles.aboutTopTitle}>From Our Channel</Text>
                 <Text style={styles.aboutTitle}>Get the bold insights and new perspectives</Text>
                 <TouchableOpacity style={{
@@ -564,7 +554,7 @@ const Home = ({ navigation }) => {
                     <Text style={{ color: '#fff', fontWeight: 'bold', fontSize: responsiveFontSize(2), textAlign: "center" }}>View More</Text>
                 </TouchableOpacity>
 
-            </View>
+            </View> */}
 
             <Copyright />
         </ScrollView>

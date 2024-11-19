@@ -62,26 +62,25 @@ const Footer = ({ navigation }) => {
         <ScrollView>
             <View style={styles.container}>
                 {/* Logo and Description */}
-                <View style={styles.logoContainer}>
+                {/* <View style={styles.logoContainer}>
                     <Image source={require('../../assets/logo.png')} style={styles.logo} />
-                    {/* <Image source={require('../assets/spanglish_logo.png')} style={styles.logo} /> */}
                     <Text style={styles.description}>
                         Spanglish World Networks Inc. is a conglomerate of multi-media companies that brings their audiences the most updated information through mediums like TV, Radio, Newspapers and Digital media.
                     </Text>
-                </View>
+                </View> */}
 
                 {/* App Store Buttons */}
-                <View style={styles.appButtonsContainer}>
+                {/* <View style={styles.appButtonsContainer}>
                     <TouchableOpacity onPress={() => Linking.openURL('https://play.google.com/store')}>
                         <Image source={require('../../assets/g-play.png')} style={styles.appButton} />
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => Linking.openURL('https://www.apple.com/app-store/')}>
                         <Image source={require('../../assets/apple-store.png')} style={styles.appButton} />
                     </TouchableOpacity>
-                </View>
+                </View> */}
 
                 {/* Quick Links */}
-                <View style={styles.quickLinksContainer}>
+                {/* <View style={styles.quickLinksContainer}>
                     <Text style={styles.sectionTitle}>Quick Links</Text>
                     {pageLinks.map((link, index) => (
                         <TouchableOpacity key={index} onPress={() => navigation.navigate(link.route)}>
@@ -91,10 +90,10 @@ const Footer = ({ navigation }) => {
                     <TouchableOpacity onPress={() => { handSwitch() }}>
                         <Text style={styles.linkText}>La Portada Canadá</Text>
                     </TouchableOpacity>
-                </View>
+                </View> */}
 
                 {/* General Office */}
-                <View style={styles.officeContainer}>
+                {/* <View style={styles.officeContainer}>
                     <Text style={styles.sectionTitle}>General Office</Text>
                     <View style={styles.sectionLocation}>
                         <Icon name="map-marker" size={20} color="#FFD700" />
@@ -104,17 +103,17 @@ const Footer = ({ navigation }) => {
                             <Text style={styles.officeText}>Canada</Text>
                         </View>
                     </View>
-                </View>
+                </View> */}
 
                 {/* Office Hours */}
-                <View style={styles.officeHoursContainer}>
+                {/* <View style={styles.officeHoursContainer}>
                     <Text style={styles.sectionTitle}>Office Hours</Text>
                     <Text style={styles.officeText}>Mon-Fri : 09am-07pm</Text>
                     <Text style={styles.officeText}>Sat-Sun : Closed</Text>
-                </View>
+                </View> */}
 
                 {/* Get in Touch */}
-                <View style={styles.contactContainer}>
+                {/* <View style={styles.contactContainer}>
                     <Text style={styles.sectionTitle}>Get In Touch</Text>
                     <View style={styles.contactItem}>
                         <Icon name="envelope" size={20} color="#FFD700" />
@@ -124,7 +123,7 @@ const Footer = ({ navigation }) => {
                         <Icon name="phone" size={20} color="#FFD700" />
                         <Text style={styles.contactText}>+1 (647) 865-9167</Text>
                     </View>
-                </View>
+                </View> */}
 
                 {/* Social Media Links */}
                 <View style={styles.socialMediaContainer}>

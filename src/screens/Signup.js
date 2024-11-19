@@ -23,6 +23,7 @@ const SignupSchema = Yup.object().shape({
 export default function Signup({ navigation }) {
     const [apiError, setApiError] = useState(null);
     const handleSignup = async (values) => {
+        console.log(values, API_BASE_URL)
         try {
             const response = await axios.post(`${API_BASE_URL}/signup`, values, {
                 headers: {

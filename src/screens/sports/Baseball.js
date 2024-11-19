@@ -1,9 +1,13 @@
 import React from 'react';
-import { View, Text, ImageBackground, TouchableOpacity, Image, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, ImageBackground, TouchableOpacity, Image, StyleSheet, ScrollView, Linking } from 'react-native';
 import { responsiveHeight, responsiveWidth, responsiveFontSize } from 'react-native-responsive-dimensions';
 import Header from '../../components/Header';
 import Copyright from '../../components/Copyright';
 const Baseball = ({ navigation }) => {
+    const handleClick = () => {
+        const url = 'https://m.youtube.com/@SpanglishWorldNetwork';
+        Linking.openURL(url).catch((err) => console.error('An error occurred', err));
+    };
 
     return (
         <ScrollView contentContainerStyle={styles.container}>
@@ -11,6 +15,7 @@ const Baseball = ({ navigation }) => {
             <ImageBackground
                 source={require("../../../assets/baseball-bg.jpg")}
                 style={styles.backgroundImage}
+                blurRadius={10}
             >
 
 
@@ -76,6 +81,25 @@ const Baseball = ({ navigation }) => {
                     >
                         Monday marked a special day in Major League Baseball as teams across the league paid tribute to the legendary Jackie Robinson, who made his MLB debut on April 15th, 1947. The Toronto Blue Jays joined in this homage by donning No. 42 jerseys, honoring Robinson’s enduring legacy.
                     </Text>
+                    <TouchableOpacity onPress={handleClick}
+                        style={{
+                            paddingVertical: responsiveHeight(1),
+                            paddingHorizontal: responsiveWidth(8),
+                            backgroundColor: '#FFD700', // yellow button background
+                            borderRadius: 20,
+                        }}
+                    >
+                        <Text
+                            style={{
+                                color: '#fff',
+                                fontWeight: 'bold',
+                                fontSize: responsiveFontSize(1.8),
+                                textAlign: 'center',
+                            }}
+                        >
+                            Youtube
+                        </Text>
+                    </TouchableOpacity>
                 </View>
             </View>
 

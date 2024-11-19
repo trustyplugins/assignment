@@ -4,7 +4,20 @@ import { responsiveHeight, responsiveWidth, responsiveFontSize } from 'react-nat
 import Header from '../components/Header';
 import Copyright from '../components/Copyright';
 import Icon from 'react-native-vector-icons/FontAwesome';
-const About = ({ navigation }) => {
+import { useSelector } from "react-redux";
+const LandingPage = ({ navigation }) => {
+
+    const userData = useSelector(state => state.user.user);
+
+    useEffect(() => {
+        if (userData) {
+            navigation.reset({
+                index: 0,
+                routes: [{ name: 'Home' }],
+            });
+        }
+    }, [])
+
     const scrollViewRef = useRef(null);
     const handleClick = () => {
         const url = 'https://m.youtube.com/@SpanglishWorldNetwork';
@@ -17,23 +30,28 @@ const About = ({ navigation }) => {
     }
     return (
         <ScrollView ref={scrollViewRef} contentContainerStyle={styles.container}>
-            <Header navigation={navigation} back={navigation.canGoBack() ? {} : null} />
+            {/* <Header navigation={navigation} back={navigation.canGoBack() ? {} : null} /> */}
             <ImageBackground
                 source={require("../../assets/about-bg.jpg")}
                 style={styles.backgroundImage}
                 blurRadius={8}
             >
+                <View style={{ flexDirection: "flex", justifyContent: "center", alignItems: "center" }}>
+                    <Image
+                        source={require('../../assets/logo.png')}
+                        style={styles.logo}
+                    />
 
+                </View>
 
                 {/* Text Content */}
                 <View style={styles.textContent}>
-                    <Text style={styles.title}>About Us</Text>
-                    <TouchableOpacity onPress={() => navigation.navigate("Home")}><Text style={styles.subtitle}>Home</Text></TouchableOpacity>
+                    <Text style={styles.title}>Spanglish Network</Text>
                 </View>
             </ImageBackground>
             {/* Our Channels Section */}
 
-            <View style={styles.channelsSection}>
+            {/* <View style={styles.channelsSection}>
                 <Text style={styles.channelsTitle}>Our Channels</Text>
                 <View style={styles.channelIcons}>
                     <Image source={require('../../assets/ch-1.png')} style={styles.channelIcon} />
@@ -41,7 +59,7 @@ const About = ({ navigation }) => {
                     <Image source={require('../../assets/ch-3.png')} style={styles.channelIcon} />
                 </View>
                 <View><Image source={require('../../assets/ch-4.png')} style={{ width: responsiveWidth(24), height: responsiveHeight(14), resizeMode: 'contain' }} /></View>
-            </View>
+            </View> */}
 
             {/* About Spanglish */}
 
@@ -55,8 +73,7 @@ const About = ({ navigation }) => {
 
             <ImageBackground
                 source={require("../../assets/bg-2.jpg")}
-                style={{ ...styles.backgroundImage, height: responsiveHeight(70), }}
-                blurRadius={8}
+                style={styles.backgroundImage}
             >
                 <View style={{ paddingVertical: responsiveHeight(7), paddingHorizontal: responsiveWidth(7) }}>
                     <Text style={{ fontSize: responsiveFontSize(2.2), color: "#ffb700", borderWidth: 1, borderColor: "gray", width: responsiveWidth(40), paddingHorizontal: 14, borderRadius: 20, justifyContent: "center", paddingVertical: 5 }}>Enjoy Spanglish</Text>
@@ -114,7 +131,7 @@ const About = ({ navigation }) => {
                 </Text>
 
                 {/* Card Section */}
-                <View
+                {/* <View
                     style={{
                         width: responsiveWidth(90),
                         backgroundColor: '#FFF',
@@ -178,8 +195,9 @@ const About = ({ navigation }) => {
                             Learn More
                         </Text>
                     </TouchableOpacity>
-                </View>
-                <View
+                </View> */}
+
+                {/* <View
                     style={{
                         width: responsiveWidth(90),
                         backgroundColor: '#FFF',
@@ -308,8 +326,12 @@ const About = ({ navigation }) => {
                             Learn More
                         </Text>
                     </TouchableOpacity>
-                </View>
+                </View> */}
             </View>
+
+            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Login')}>
+                <Text style={styles.buttonText}>Login</Text>
+            </TouchableOpacity>
 
             <Copyright />
 
@@ -317,7 +339,7 @@ const About = ({ navigation }) => {
     );
 };
 
-export default About;
+export default LandingPage;
 
 const styles = StyleSheet.create({
     container: {
@@ -327,7 +349,8 @@ const styles = StyleSheet.create({
         width: responsiveWidth(100),
         height: responsiveHeight(50),
         justifyContent: 'space-between',
-        paddingTop: responsiveHeight(20)
+        paddingTop: responsiveHeight(2),
+
     },
     topBar: {
         flexDirection: 'row',
@@ -337,8 +360,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     logo: {
-        width: responsiveWidth(25),
-        height: responsiveHeight(5),
+        width: responsiveWidth(50),
+        height: responsiveHeight(12),
         resizeMode: 'contain',
     },
     menuIcon: {
@@ -347,7 +370,7 @@ const styles = StyleSheet.create({
         resizeMode: 'contain',
     },
     textContent: {
-        marginBottom: responsiveHeight(5),
+        marginBottom: responsiveHeight(8),
         paddingHorizontal: responsiveWidth(8)
     },
     title: {
@@ -404,5 +427,19 @@ const styles = StyleSheet.create({
     aboutDes: {
         fontSize: responsiveFontSize(1.8),
         color: 'gray',
+    },
+    button: {
+        backgroundColor: '#FFD700',
+        paddingVertical: responsiveHeight(1.5),
+        paddingHorizontal: responsiveWidth(10),
+        borderRadius: responsiveWidth(10),
+        marginHorizontal: responsiveWidth(5),
+        marginVertical: responsiveHeight(5),
+    },
+    buttonText: {
+        color: '#fff',
+        fontWeight: 'bold',
+        fontSize: responsiveFontSize(2),
+        textAlign: "center"
     },
 });

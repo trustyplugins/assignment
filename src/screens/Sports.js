@@ -180,12 +180,13 @@ const Sports = ({ navigation }) => {
 
     return (
         <ScrollView ref={scrollViewRef} contentContainerStyle={styles.container}>
-        <Header navigation={navigation} back={navigation.canGoBack() ? {} : null} />
+            <Header navigation={navigation} back={navigation.canGoBack() ? {} : null} />
             <ImageBackground
                 source={require("../../assets/sport-bg.jpg")}
                 style={styles.backgroundImage}
+                blurRadius={10}
             >
-                
+
 
                 {/* Text Content */}
                 <View style={styles.textContent}>

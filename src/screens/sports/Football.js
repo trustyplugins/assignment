@@ -1,9 +1,13 @@
 import React from 'react';
-import { View, Text, ImageBackground, TouchableOpacity, Image, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, ImageBackground, TouchableOpacity, Image, StyleSheet, ScrollView, Linking } from 'react-native';
 import { responsiveHeight, responsiveWidth, responsiveFontSize } from 'react-native-responsive-dimensions';
 import Header from '../../components/Header';
 import Copyright from '../../components/Copyright';
 const Football = ({ navigation }) => {
+    const handleClick = () => {
+        const url = 'https://m.youtube.com/@SpanglishWorldNetwork';
+        Linking.openURL(url).catch((err) => console.error('An error occurred', err));
+    };
 
     return (
         <ScrollView contentContainerStyle={styles.container}>
@@ -11,6 +15,7 @@ const Football = ({ navigation }) => {
             <ImageBackground
                 source={require("../../../assets/foot-bg.jpg")}
                 style={styles.backgroundImage}
+                blurRadius={10}
             >
 
 
@@ -76,6 +81,25 @@ const Football = ({ navigation }) => {
                     >
                         This week, the world of football pays tribute to the legendary Pelé, who changed the face of the sport with his unmatched skill and passion. Teams around the globe are coming together to celebrate his legacy, with special events honoring his influence and dedication to the beautiful game.
                     </Text>
+                    <TouchableOpacity onPress={handleClick}
+                        style={{
+                            paddingVertical: responsiveHeight(1),
+                            paddingHorizontal: responsiveWidth(8),
+                            backgroundColor: '#FFD700', // yellow button background
+                            borderRadius: 20,
+                        }}
+                    >
+                        <Text
+                            style={{
+                                color: '#fff',
+                                fontWeight: 'bold',
+                                fontSize: responsiveFontSize(1.8),
+                                textAlign: 'center',
+                            }}
+                        >
+                            Youtube
+                        </Text>
+                    </TouchableOpacity>
                 </View>
             </View>
 

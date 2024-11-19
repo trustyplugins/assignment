@@ -17,6 +17,7 @@ import Hockey from '../screens/sports/Hockey';
 import Rugby from '../screens/sports/Rugby';
 import Soccer from '../screens/sports/Soccer';
 import Tennis from '../screens/sports/Tennis';
+import LandingPage from '../screens/LandingPage';
 import { PaperProvider, DefaultTheme } from 'react-native-paper';
 const Stack = createNativeStackNavigator();
 const customTheme = {
@@ -31,6 +32,11 @@ const AppNavigator = () => {
         <PaperProvider theme={customTheme}>
             <SafeAreaView style={styles.container}>
                 <Stack.Navigator>
+                    <Stack.Screen
+                        name="Landing"
+                        component={LandingPage}
+                        options={{ headerShown: false }}
+                    />
                     <Stack.Screen
                         name="Home"
                         component={Home}
