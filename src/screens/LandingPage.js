@@ -82,14 +82,14 @@ const LandingPage = ({ navigation }) => {
                     <TouchableOpacity style={{
                         backgroundColor: '#FFD700', paddingVertical: responsiveHeight(1.5), borderRadius: responsiveWidth(10), width: responsiveWidth(42), marginVertical: responsiveHeight(4)
                     }} onPress={handleClick}>
-                        <Text style={{ color: '#fff', fontWeight: 'bold', fontSize: responsiveFontSize(2), textAlign: "center" }}>YouTube Channer</Text>
+                        <Text style={{ color: '#fff', fontWeight: 'bold', fontSize: responsiveFontSize(2), textAlign: "center" }}>YouTube Channel</Text>
                     </TouchableOpacity>
                 </View>
             </ImageBackground>
 
             {/* Why Choose Us */}
 
-            <View
+            {/* <View
                 style={{
                     paddingHorizontal: responsiveWidth(5),
                     paddingVertical: responsiveHeight(3),
@@ -130,8 +130,8 @@ const LandingPage = ({ navigation }) => {
                     Dive into a vibrant mosaic of articles, each a carefully crafted tapestry of words that inform, entertain, and spark curiosity. Whether you're a news hound hungry for the latest headlines or a culture connoisseur seeking the next binge-worthy masterpiece, our diverse array of content has you covered.
                 </Text>
 
-                {/* Card Section */}
-                {/* <View
+                
+                <View
                     style={{
                         width: responsiveWidth(90),
                         backgroundColor: '#FFF',
@@ -195,9 +195,9 @@ const LandingPage = ({ navigation }) => {
                             Learn More
                         </Text>
                     </TouchableOpacity>
-                </View> */}
+                </View>
 
-                {/* <View
+                <View
                     style={{
                         width: responsiveWidth(90),
                         backgroundColor: '#FFF',
@@ -326,8 +326,8 @@ const LandingPage = ({ navigation }) => {
                             Learn More
                         </Text>
                     </TouchableOpacity>
-                </View> */}
-            </View>
+                </View>
+            </View> */}
 
             <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Login')}>
                 <Text style={styles.buttonText}>Login</Text>

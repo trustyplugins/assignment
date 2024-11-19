@@ -49,10 +49,13 @@ export default function Signup({ navigation }) {
                 source={require("../../assets/media-event.jpg")}
                 style={styles.backgroundImage}
             >
-                <Image
-                    source={require('../../assets/logo.png')}
-                    style={styles.logo}
-                />
+
+                <TouchableOpacity onPress={() => navigation.navigate("Landing")}>
+                    <Image
+                        source={require('../../assets/logo.png')}
+                        style={styles.logo}
+                    />
+                </TouchableOpacity>
 
 
                 {/* Text Content */}

@@ -49,10 +49,13 @@ export default function Login({ navigation }) {
         style={styles.backgroundImage}
       >
         {/* <Header navigation={navigation} back={navigation.canGoBack() ? {} : null} /> */}
-        <Image
-          source={require('../../assets/logo.png')}
-          style={styles.logo}
-        />
+        <TouchableOpacity onPress={() => navigation.navigate("Landing")}>
+          <Image
+            source={require('../../assets/logo.png')}
+            style={styles.logo}
+          />
+        </TouchableOpacity>
+
 
         {/* Text Content */}
         <View style={styles.textContent}>

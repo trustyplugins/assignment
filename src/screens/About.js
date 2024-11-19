@@ -65,7 +65,7 @@ const About = ({ navigation }) => {
                     <TouchableOpacity style={{
                         backgroundColor: '#FFD700', paddingVertical: responsiveHeight(1.5), borderRadius: responsiveWidth(10), width: responsiveWidth(42), marginVertical: responsiveHeight(4)
                     }} onPress={handleClick}>
-                        <Text style={{ color: '#fff', fontWeight: 'bold', fontSize: responsiveFontSize(2), textAlign: "center" }}>YouTube Channer</Text>
+                        <Text style={{ color: '#fff', fontWeight: 'bold', fontSize: responsiveFontSize(2), textAlign: "center" }}>YouTube Channel</Text>
                     </TouchableOpacity>
                 </View>
             </ImageBackground>
