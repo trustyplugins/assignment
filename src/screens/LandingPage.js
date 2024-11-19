@@ -73,7 +73,7 @@ const LandingPage = ({ navigation }) => {
 
             <ImageBackground
                 source={require("../../assets/bg-2.jpg")}
-                style={styles.backgroundImage}
+                style={{ ...styles.backgroundImage, height: responsiveHeight(55) }}
             >
                 <View style={{ paddingVertical: responsiveHeight(7), paddingHorizontal: responsiveWidth(7) }}>
                     <Text style={{ fontSize: responsiveFontSize(2.2), color: "#ffb700", borderWidth: 1, borderColor: "gray", width: responsiveWidth(40), paddingHorizontal: 14, borderRadius: 20, justifyContent: "center", paddingVertical: 5 }}>Enjoy Spanglish</Text>

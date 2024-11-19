@@ -670,7 +670,7 @@ const styles = StyleSheet.create({
     },
     latestShowsSection: {
         paddingVertical: responsiveHeight(2),
-        paddingHorizontal: responsiveWidth(5),
+        marginHorizontal: responsiveWidth(2),
         backgroundColor: '#fff',
     },
     sectionTitle: {
