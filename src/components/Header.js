@@ -129,7 +129,7 @@ const Header = ({ navigation, back }) => {
                         <TouchableOpacity onPress={() => { toggleMenu(); handSwitch(); }}>
                             <Text style={styles.menuItem}>La Portada Canadá</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity onPress={toggleMenu}>
+                        <TouchableOpacity  onPress={() => { Linking.openURL('https://www.zingotv.com/'); toggleMenu(); }}>
                             <Text style={styles.menuItem}>Zingo Tv</Text>
                         </TouchableOpacity>
                         <TouchableOpacity onPress={() => { navigation.navigate('Contact'); toggleMenu(); }}>
