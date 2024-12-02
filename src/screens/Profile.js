@@ -17,7 +17,7 @@ const Profile = ({ navigation }) => {
     const TabData = [
         { id: '1', title: 'Username', details: userData?.username || "N/A" },
         { id: '2', title: 'Email', details: userData?.email || "N/A" },
-        { id: '3', title: 'Phone', details: "+91- " + userData?.phone || "N/A" },
+        { id: '3', title: 'Phone', details: userData?.phone || "N/A" },
     ];
 
     const [expandedId, setExpandedId] = useState(null);
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     },
     backgroundImage: {
         width: responsiveWidth(100),
-        height: responsiveHeight(Platform.OS === 'ios' ? 40 :50), // Reduced height for the image background
+        height: responsiveHeight(Platform.OS === 'ios' ? 40 :47), // Reduced height for the image background
         justifyContent: 'center',
         alignItems: 'center',
     },
